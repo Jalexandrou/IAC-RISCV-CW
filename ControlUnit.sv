@@ -43,31 +43,7 @@ module ControlUnit #(
         .IMMSrc_o       (ImmSrc_o),
         .RegWrite_o     (RegWrite_o)
     )
-
-    always_comb begin
-    	case (instr[6:0])
-            addi: begin	
-                RegWrite = 1;		
-    			ALUctrl = 0;
-    	        ALUsrc = 1;
-    	        ImmSrc = 0;
-    	        PCsrc = 0;
-    		end
-    		bne: if (!EQ) begin
-    			RegWrite = 0;		
-    			ALUctrl = 001; //check if this is required for value of EQ
-    	        ALUsrc = 0;
-    	        ImmSrc = 3;
-    	        PCsrc = 1;
-    		end
-    		default: begin
-    			RegWrite = 0; // Ensure no register is written to by default
-                ALUctrl = 0;
-    	        ALUsrc = 0;
-    	        ImmSrc = 0;
-    	        PCsrc = 0;
-    		end
-    	endcase
-    end
+    
+    assign PCSrc_o = branch & 0; 
 
 endmodule
