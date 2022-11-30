@@ -24,34 +24,84 @@ typedef enum bit[6:0]   {
     always_comb begin
         case (opcode)
             RType: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             Load: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             IType: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             SType: begin
-            
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             BType: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             AddUp: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             LoadUpp: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             JumpImm: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             JumpLink: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
             default: begin
-
+                Branch_o    = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 2'b0;
+                RegWrite_o  = 1'b0;
             end
         endcase
     end
