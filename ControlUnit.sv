@@ -24,6 +24,14 @@ module ControlUnit #(
     assign funct3 = instr[14:12];
     assign funct7 = instr[31:25];
 
+    ALUDecoder ALUDecoder (
+        .func3          (func3),
+        .func7          (func7),
+        .op5            (opcode[5]),
+        .ALUOp          (WIP),
+        .ALUControl_o   (ALUControl_o)
+    )
+
 
 typedef enum bit[6:0]   {
         RType    =   7'b0110011,
