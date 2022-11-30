@@ -4,16 +4,16 @@
 
 | Opcode | Branch_o | ResultSrc_o | MemWrite_o | ALUSrc_o | ImmSrc_o | RegWrite_o |
 | --- | --- | --- | --- | --- | --- | --- |
-| R-Type | x | x | x | x | x | x |
-| Load Mem | x | x | x | x | x | x |
-| I-Type | x | x | x | x | x | x |
-| Store Mem | x | x | x | x | x | x |
-| Branch | x | x | x | x | x | x |
-| rd = uppimm + PC | x | x | x | x | x | x |
-| rd = uppimm | x | x | x | x | x | x |
-| Jump and Link Reg | x | x | x | x | x | x |
-| Jump and Link | x | x | x | x | x | x |
-| default? | x | x | x | x | x | x |
+| R-Type | ? | ? | ? | ? | ? | ? |
+| Load Mem | ? | ? | ? | ? | ? | ? |
+| I-Type | ? | ? | ? | ? | ? | ? |
+| Store Mem | ? | ? | ? | ? | ? | ? |
+| Branch | ? | ? | ? | ? | ? | ? |
+| rd = uppimm + PC | ? | ? | ? | ? | ? | ? |
+| rd = uppimm | ? | ? | ? | ? | ? | ? |
+| Jump and Link Reg | ? | ? | ? | ? | ? | ? |
+| Jump and Link | ? | ? | ? | ? | ? | ? |
+| default? | ? | ? | ? | ? | ? | ? |
 
 | Signal | 0 | 1 |
 | --- | --- | --- |
