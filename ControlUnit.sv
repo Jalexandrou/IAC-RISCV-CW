@@ -30,6 +30,18 @@ module ControlUnit #(
         .op5            (opcode[5]),
         .ALUOp          (WIP),
         .ALUControl_o   (ALUControl_o)
+    );
+
+    logic                       branch;
+
+    ControlUnitDecoder ControlUnitDecoder (
+        .opcode         (opcode),
+        .Branch_o       (branch),
+        .ResultSrc_o    (ResultSrc_o),
+        .MemWrite_o     (MemWrite_o),
+        .ALUSrc_o       (ALUSrc_o),
+        .IMMSrc_o       (ImmSrc_o),
+        .RegWrite_o     (RegWrite_o)
     )
 
 
