@@ -14,9 +14,6 @@ module ControlUnit #(
 );
 
     logic   [6:0]               opcode;
-    logic   [4:0]               rd;
-    logic   [4:0]               rs1;
-    logic   [4:0]               rs2;
     logic   [2:0]               func3;
     logic   [6:0]               func7;
 
