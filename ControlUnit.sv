@@ -13,6 +13,14 @@ module ControlUnit #(
     output  logic               RegWrite_o
 );
 
+    logic   [6:0]               opcode;
+    logic   [4:0]               rd;
+    logic   [4:0]               rs1;
+    logic   [4:0]               rs2;
+    logic   [2:0]               func3;
+    logic   [6:0]               func7;
+
+
 typedef enum bit[6:0]   {addi = 7'b0010011, bne = 7'b1100011}   Opcode;
 
     always_comb begin
