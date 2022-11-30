@@ -20,6 +20,10 @@ module ControlUnit #(
     logic   [2:0]               func3;
     logic   [6:0]               func7;
 
+    assign opcode = instr[6:0];
+    assign funct3 = instr[14:12];
+    assign funct7 = instr[31:25];
+
 
 typedef enum bit[6:0]   {
         RType    =   7'b0110011,
