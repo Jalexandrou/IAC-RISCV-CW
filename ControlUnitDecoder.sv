@@ -21,4 +21,39 @@ typedef enum bit[6:0]   {
         JumpLink =   7'b1101111
     }                           Opcode;
 
+    always_comb begin
+        case (opcode)
+            RType: begin
+
+            end
+            Load: begin
+
+            end
+            IType: begin
+
+            end
+            SType: begin
+            
+            end
+            BType: begin
+
+            end
+            AddUp: begin
+
+            end
+            LoadUpp: begin
+
+            end
+            JumpImm: begin
+
+            end
+            JumpLink: begin
+
+            end
+            default: begin
+
+            end
+        endcase
+    end
+
 endmodule
