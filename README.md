@@ -1,4 +1,4 @@
-# iac-riscv-cw-1
+# Team 1 (RISCy Business) ✨
 
 ## Table for Control Unit Signals
 
