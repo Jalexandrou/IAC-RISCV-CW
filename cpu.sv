@@ -24,6 +24,8 @@ module cpu #(
     logic [DATA_WIDTH-1:0] pc;
     logic [DATA_WIDTH-1:0] next_pc;
     logic                  PCsrc;
+    
+    logic [DATA_WIDTH-1:0] readData;        // Interconnecting Wires For Data Memory
 
     RegFile RegFile (          
         .clk (clk),
@@ -31,7 +33,7 @@ module cpu #(
         .ad2 (instr[24:20]),
         .ad3 (instr[11:7]),
         .we3 (RegWrite),
-        .wd3 (ALUOut),
+        .wd3 (Result),
         .rd1 (ALUop1),
         .rd2 (regOp2),
         .a0 (a0)
@@ -85,6 +87,21 @@ module cpu #(
         .ALUsrc (ALUsrc),
         .ImmSrc (ImmSrc),
         .PCsrc (PCsrc)
+    );
+    
+    DataMem DataMem (
+        .clk (clk),
+        .address (ALUout),
+        .writeData (regOp2),
+        .we (MemWrite),
+        .readData (readData)
+    );
+    
+    Datamux Datamux (
+        .readData (readData),
+        .ALUOut (ALUOut),
+        .Result (Result),
+        .Resultsrc (Resultsrc)
     );
 
 endmodule
