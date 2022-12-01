@@ -1,7 +1,5 @@
 # Team 1 (RISCy Business) ✨
 
-![image](https://user-images.githubusercontent.com/59978422/205100761-9c9c0d87-f3ab-423b-82d8-2b6a43eb361f.png)
-
 ## Table for Control Unit Signals
 
 | Opcode | Branch_o | ResultSrc_o | MemWrite_o | ALUSrc_o | ImmSrc_o | RegWrite_o |
@@ -28,3 +26,6 @@
 | Signal | 00 | 01 | 11 | 10 |
 | --- | --- | --- | --- | --- |
 | ImmSrc_o | Something | Something | Something | Something |
+
+![image](https://user-images.githubusercontent.com/59978422/205101131-365f9510-62d7-4854-b699-884c128b761f.png)
+
