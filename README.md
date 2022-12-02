@@ -1,5 +1,7 @@
 # Team 1 (RISCy Business) ✨
 
+[Project Brief Repo](https://github.com/EIE2-IAC-Labs/Project_Brief)
+
 ## Table for Control Unit Signals
 
 | Opcode | Branch_o | ResultSrc_o | MemWrite_o | ALUSrc_o | ImmSrc_o | RegWrite_o |
