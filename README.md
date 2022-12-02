@@ -7,7 +7,7 @@
 | R-Type | 0 | 0 | 0 | 0 | xx | 1 |
 | Load Mem | 0 | 1 | 0 | 1 | 00 | 1 |
 | I-Type | ? | ? | ? | ? | ? | ? |
-| Store Mem | ? | ? | ? | ? | ? | ? |
+| Store Mem | 0 | x | 1 | 1 | 01 | 0 |
 | Branch | ? | ? | ? | ? | ? | ? |
 | rd = uppimm + PC | ? | ? | ? | ? | ? | ? |
 | rd = uppimm | ? | ? | ? | ? | ? | ? |
