@@ -18,6 +18,7 @@ module ControlUnit #(
     logic   [2:0]               func3;
     logic   [6:0]               func7;
     logic   [1:0]               ALUOp;
+    logic                       branch;
 
     assign opcode = instr[6:0];
     assign funct3 = instr[14:12];
@@ -30,8 +31,6 @@ module ControlUnit #(
         .ALUOp          (ALUOp),
         .ALUControl_o   (ALUControl_o)
     );
-
-    logic                       branch;
 
     ControlUnitDecoder ControlUnitDecoder (
         .opcode_i       (opcode),
