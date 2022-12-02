@@ -21,7 +21,7 @@ module ALU #(
         endcase
     end;
 
-    assign zero_o = ~(|ALUOut);
+    assign zero_o = (ALUOut == 32'b0);
 
 
 endmodule
