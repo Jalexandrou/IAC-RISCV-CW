@@ -3,6 +3,7 @@ module ControlUnit #(
 )(
 	input 	logic               eq_i,
 	input   [INSTR_WIDTH-1:0]   instr_i,
+    input   logic               zero_i
 
 	output  logic               PCSrc_o,
     output  logic               ResultSrc_o,
@@ -41,6 +42,6 @@ module ControlUnit #(
         .RegWrite_o     (RegWrite_o)
     )
     
-    assign PCSrc_o = branch & 0; 
+    assign PCSrc_o = branch & zero_i; 
 
 endmodule
