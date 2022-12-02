@@ -4,7 +4,7 @@
 
 | Opcode | Branch_o | ResultSrc_o | MemWrite_o | ALUSrc_o | ImmSrc_o | RegWrite_o |
 | --- | --- | --- | --- | --- | --- | --- |
-| R-Type | ? | ? | ? | ? | ? | ? |
+| R-Type | 0 | 0 | 0 | 0 | xx | 1 |
 | Load Mem | ? | ? | ? | ? | ? | ? |
 | I-Type | ? | ? | ? | ? | ? | ? |
 | Store Mem | ? | ? | ? | ? | ? | ? |
