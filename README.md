@@ -23,9 +23,9 @@
 | ALUSrc_o | ALU->SrcB reads from Reg->RD2 | ALU->SrcB reads from SignExtend |
 | RegWrite_o | Register does not write | Register saves WD in A |
 
-| Signal | 000 | 001 | 010 | 011 | 100 |
+| Signal | I-Type | Store | Branch | Jump | UpImm |
 | --- | --- | --- | --- | --- | --- |
-| ImmSrc_o | Imm | Store | Branch | Jump | UppImm
+| ImmSrc_o | 000 | 001 | 010 | 011 | 100 |
 
 ![image](https://user-images.githubusercontent.com/59978422/205101131-365f9510-62d7-4854-b699-884c128b761f.png)
 
