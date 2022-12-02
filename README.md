@@ -24,8 +24,8 @@
 | RegWrite_o | Register does not write | Register saves WD in A |
 
 | Signal | 000 | 001 | 010 | 011 | 100 |
-| --- | --- | --- | --- | --- |
-| ImmSrc_o | Imm | Store | Branch | Jump | UppImm |
+| --- | --- | --- | --- | --- | --- |
+| ImmSrc_o | Imm | Store | Branch | Jump | UppImm
 
 ![image](https://user-images.githubusercontent.com/59978422/205101131-365f9510-62d7-4854-b699-884c128b761f.png)
 
