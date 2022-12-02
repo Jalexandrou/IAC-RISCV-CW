@@ -17,6 +17,7 @@ module ControlUnit #(
     logic   [6:0]               opcode;
     logic   [2:0]               func3;
     logic   [6:0]               func7;
+    logic   [1:0]               ALUOp;
 
     assign opcode = instr[6:0];
     assign funct3 = instr[14:12];
@@ -26,20 +27,21 @@ module ControlUnit #(
         .func3          (func3),
         .func7          (func7),
         .op5            (opcode[5]),
-        .ALUOp          (WIP),
+        .ALUOp          (ALUOp),
         .ALUControl_o   (ALUControl_o)
     );
 
     logic                       branch;
 
     ControlUnitDecoder ControlUnitDecoder (
-        .opcode         (opcode),
+        .opcode_i       (opcode),
         .Branch_o       (branch),
         .ResultSrc_o    (ResultSrc_o),
         .MemWrite_o     (MemWrite_o),
         .ALUSrc_o       (ALUSrc_o),
         .IMMSrc_o       (ImmSrc_o),
         .RegWrite_o     (RegWrite_o)
+        .ALUOp_o        (ALUOp)
     )
     
     assign PCSrc_o = branch & zero_i; 
