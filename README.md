@@ -10,7 +10,7 @@
 | Store Mem | 0 | x | 1 | 1 | 001 | 0 |
 | Branch | 1 | x | 0 | 0 | 010 | 0 |
 | rd = uppimm + PC | ? | ? | ? | ? | 100 | ? |
-| rd = uppimm | ? | ? | ? | ? | ? | 100 |
+| rd = uppimm | ? | ? | ? | ? | 100 | ? |
 | Jump and Link Reg | ? | ? | ? | ? | 011 | ? |
 | Jump and Link | ? | ? | ? | ? | 011 | ? |
 | default? | ? | ? | ? | ? | ? | ? |
