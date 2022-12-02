@@ -21,8 +21,8 @@ module RegFile #(
     end
 
     
-    assign rd1 = reg_file[ad1];
+    assign  rd1 = reg_file[ad1];
     assign  rd2 = reg_file[ad2];
-    assign  a0 = reg_file[64'b1010];
+    assign  a0  = reg_file[5'b1010];
     
 endmodule
