@@ -1,5 +1,5 @@
 module ControlUnitDecoder #()(
-    input [6:0]                 opcode,
+    input [6:0]                 opcode_i,
 
 	output  logic               Branch_o,
     output  logic               ResultSrc_o,
