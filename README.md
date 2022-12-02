@@ -8,7 +8,7 @@
 | Load Mem | 0 | 1 | 0 | 1 | 00 | 1 |
 | I-Type | ? | ? | ? | ? | ? | ? |
 | Store Mem | 0 | x | 1 | 1 | 01 | 0 |
-| Branch | ? | ? | ? | ? | ? | ? |
+| Branch | 1 | x | 0 | 0 | 10 | 0 |
 | rd = uppimm + PC | ? | ? | ? | ? | ? | ? |
 | rd = uppimm | ? | ? | ? | ? | ? | ? |
 | Jump and Link Reg | ? | ? | ? | ? | ? | ? |
