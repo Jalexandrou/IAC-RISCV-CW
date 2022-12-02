@@ -5,7 +5,7 @@ module ALU #(
     input  logic   [DATA_WIDTH-1:0] ALUop2,
     input  logic   [2:0]            ALUctrl,
     output logic   [DATA_WIDTH-1:0] ALUOut,
-    output logic                    eq
+    output logic                    zero_o
 );
 
     typedef enum bit[2:0] {ADD, SUBTRACT, AND, OR, SLT = 5} func;
@@ -19,9 +19,9 @@ module ALU #(
             SLT: ALUOut = (ALUop1 < ALUop2) ? 1 : 0;
             default: ALUOut = ALUop1 + ALUop2;
         endcase
-        if (ALUop1 == ALUop2) eq = 1;
-        else                 eq = 0;
     end;
+
+    assign zero_o = |ALUOut ? 0 : 1;
 
 
 endmodule
