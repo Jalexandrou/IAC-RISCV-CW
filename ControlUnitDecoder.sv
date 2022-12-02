@@ -1,12 +1,13 @@
 module ControlUnitDecoder #()(
-    input [6:0] opcode,
+    input [6:0]                 opcode,
 
 	output  logic               Branch_o,
     output  logic               ResultSrc_o,
     output  logic               MemWrite_o,
     output  logic               ALUSrc_o,
     output  [1:0]               ImmSrc_o,
-    output  logic               RegWrite_o
+    output  logic               RegWrite_o,
+    output  [1:0]               ALUOp_o
 );
 
 typedef enum bit[6:0]   {
