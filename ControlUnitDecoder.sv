@@ -52,8 +52,8 @@ typedef enum bit[6:0]   {
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b1;
-                ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ALUSrc_o    = 1'b1;
+                ImmSrc_o    = 2'b01;
                 RegWrite_o  = 1'b0;
             end
             BType: begin
