@@ -8,3 +8,5 @@ iloop:
     addi a1, a1, 1          # increment a1
     bne at, t1, iloop       # if a1 !=9, branch to i loop
     bne t1, zero, mloop     # else always branch to mloop
+    
+    # Need to use a JAL instruction and Map Memory Correctly
