@@ -1,3 +1,4 @@
+main:
     addi t1, zero, 0x8      # load t1 with 8
     addi a0, zero, 0x0      # a0 used for output
 mloop:
