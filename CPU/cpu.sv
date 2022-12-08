@@ -8,14 +8,14 @@ module cpu #(
     output logic [DATA_WIDTH-1:0]   a0                  
 );
     logic [DATA_WIDTH-1:0] ALUop1;          // Interconnecting Wires For ALU
-    logic [DATA_WIDTH-1:0] ALUop2;
     logic [DATA_WIDTH-1:0] ALUOut;
     logic [2:0]            ALUctrl;
     logic                  ALUsrc;
-    logic                  eq;
+    logic                  zero;
 
     logic [DATA_WIDTH-1:0] regOp2;         // Interconnecting Wires For RegFile
     logic                  RegWrite;
+    logic                  ResultSrc;
 
     logic [DATA_WIDTH-1:0] ImmOp;          // Interconnecting Wires For Sign Extend
     logic [2:0]            ImmSrc;
@@ -25,7 +25,8 @@ module cpu #(
     logic [DATA_WIDTH-1:0] next_pc;
     logic                  PCsrc;
     
-    logic [DATA_WIDTH-1:0] readData;        // Interconnecting Wires For Data Memory
+    logic [DATA_WIDTH-1:0] ReadData;        // Interconnecting Wires For Data Memory
+    logic                  MemWrite;
 
     RegFile RegFile (          
         .clk (clk),
@@ -33,24 +34,17 @@ module cpu #(
         .ad2 (instr[24:20]),
         .ad3 (instr[11:7]),
         .we3 (RegWrite),
-        .wd3 (Result),
+        .wd3 (ResultSrc ? ReadData : ALUOut),
         .rd1 (ALUop1),
         .rd2 (regOp2),
         .a0 (a0)
     );
 
-    ALUmux ALUmux (
-        .regOp2 (regOp2),
-        .ImmOp (ImmOp),
-        .ALUop2 (ALUop2),
-        .ALUsrc (ALUsrc)
-    );
-
     ALU ALU (
         .ALUop1 (ALUop1),
-        .ALUop2 (ALUop2),
+        .ALUop2 (ALUsrc ? ImmOp : regOp2),
         .ALUOut (ALUOut),
-        .eq (eq),
+        .zero_o (zero),
         .ALUctrl (ALUctrl)
     );
 
@@ -80,28 +74,24 @@ module cpu #(
     );
 
     ControlUnit ControlUnit (
-        .instr (instr[6:0]),
-        .EQ    (eq),
-        .RegWrite (RegWrite),
-        .ALUctrl (ALUctrl),
-        .ALUsrc (ALUsrc),
-        .ImmSrc (ImmSrc),
-        .PCsrc (PCsrc)
+        .instr_i (instr[6:0]),
+        .zero_i    (zero),
+        .PCSrc_o (PCsrc),
+        .ResultSrc_o (ResultSrc),
+        .MemWrite_o (MemWrite),
+        .ALUControl_o (ALUctrl),
+        .ALUSrc_o (ALUsrc)
+        .ImmSrc_o (ImmSrc),
+        .RegWrite_o (RegWrite)
     );
     
     DataMem DataMem (
         .clk (clk),
-        .address (ALUout),
-        .writeData (regOp2),
-        .we (MemWrite),
-        .readData (readData)
+        .Address (ALUout),
+        .WriteData (regOp2),
+        .we (MemWrite),  //Control Unit needed
+        .ReadData (ReadData)
     );
     
-    Datamux Datamux (
-        .readData (readData),
-        .ALUOut (ALUOut),
-        .Result (Result),
-        .Resultsrc (Resultsrc)
-    );
 
 endmodule

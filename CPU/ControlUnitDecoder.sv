@@ -23,7 +23,7 @@ typedef enum bit[6:0]   {
     }                           Opcode;
 
     always_comb begin
-        case (opcode)
+        case (opcode_i)
             RType: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;

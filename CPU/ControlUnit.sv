@@ -1,9 +1,8 @@
 module ControlUnit #(
     parameter INSTR_WIDTH = 32
 )(
-	input 	logic               eq_i,
 	input   [INSTR_WIDTH-1:0]   instr_i,
-    input   logic               zero_i
+    input   logic               zero_i,
 
 	output  logic               PCSrc_o,
     output  logic               ResultSrc_o,
