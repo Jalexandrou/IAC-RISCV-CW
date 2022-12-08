@@ -35,11 +35,12 @@ int main(int argc, char **argv, char **env) {
         vbdBar(top->a0 & 0xFF);
         vbdCycle(i);
 
-        if (Verilated::gotFinish() || (vbdGetkey()=='q')) exit(0);
+        if (Verilated::gotFinish() || (vbdGetkey()=='q')){     
+            vbdClose();
+            tfp->close();
+            exit(0);
+        }
 
     }
 
-    vbdClose();
-    tfp->close();
-    exit(0);
 }

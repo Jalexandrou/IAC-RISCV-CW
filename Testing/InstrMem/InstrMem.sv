@@ -10,10 +10,10 @@ logic [DATA_WIDTH-1:0] rom_array [2**16-1:0];
 
 initial begin
         $readmemh("program.mem", rom_array);
-end;
+end
         //output is asynchronous
 always_comb begin
     instr = rom_array[{2'b0, PC[31:2]}]; 
-end; 
+end
            
 endmodule    
