@@ -2,6 +2,7 @@ module ALUDecoder #()(
     input  [2:0]    func3,
     input  [6:0]    func7,
     input  logic    op5,
+    input  logic    op4,
     input  [1:0]    ALUOp,
     input  logic    branch,
     input  logic    zero,
@@ -16,6 +17,12 @@ always_comb begin
         2'b01: ALUControl_o = 3'b001;
         2'b10: begin
             case(func3)
+                3'b001: begin
+                    case(op4)
+                        1'b1: ALUControl_o = 3'b110;   //left shift for slli instruction
+                        default: ALUControl_o = 3'b000;
+                    endcase
+                end 
                 3'b010: ALUControl_o = 3'b101;
                 3'b110: ALUControl_o = 3'b011;
                 3'b111: ALUControl_o = 3'b010;

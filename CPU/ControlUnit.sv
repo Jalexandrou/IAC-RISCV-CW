@@ -28,6 +28,7 @@ module ControlUnit #(
         .func3          (func3),
         .func7          (func7),
         .op5            (opcode[5]),
+        .op4            (opcode[4]),
         .ALUOp          (ALUOp),
         .ALUControl_o   (ALUControl_o),
         .branch         (branch),
