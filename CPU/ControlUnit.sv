@@ -9,7 +9,7 @@ module ControlUnit #(
     output  logic               MemWrite_o,
     output  [2:0]               ALUControl_o,
     output  logic               ALUSrc_o,
-    output  [1:0]               ImmSrc_o,
+    output  [2:0]               ImmSrc_o,
     output  logic               RegWrite_o
 );
 
@@ -19,16 +19,20 @@ module ControlUnit #(
     logic   [1:0]               ALUOp;
     logic                       branch;
 
-    assign opcode = instr[6:0];
-    assign funct3 = instr[14:12];
-    assign funct7 = instr[31:25];
+    assign opcode = instr_i[6:0];
+    assign func3 = instr_i[14:12];
+    assign func7 = instr_i[31:25];
+
 
     ALUDecoder ALUDecoder (
         .func3          (func3),
         .func7          (func7),
         .op5            (opcode[5]),
         .ALUOp          (ALUOp),
-        .ALUControl_o   (ALUControl_o)
+        .ALUControl_o   (ALUControl_o),
+        .branch         (branch),
+        .zero           (zero_i),
+        .PCSrc_o        (PCSrc_o)
     );
 
     ControlUnitDecoder ControlUnitDecoder (
@@ -37,11 +41,10 @@ module ControlUnit #(
         .ResultSrc_o    (ResultSrc_o),
         .MemWrite_o     (MemWrite_o),
         .ALUSrc_o       (ALUSrc_o),
-        .IMMSrc_o       (ImmSrc_o),
-        .RegWrite_o     (RegWrite_o)
+        .ImmSrc_o       (ImmSrc_o),
+        .RegWrite_o     (RegWrite_o),
         .ALUOp_o        (ALUOp)
-    )
+    );
     
-    assign PCSrc_o = branch & zero_i; 
 
 endmodule

@@ -11,6 +11,10 @@ module DataMem #(
 
     logic [DATA_WIDTH-1:0] ram_array [2**16-1:0];
 
+    initial begin
+        $readmemh("sinerom.hex", ram_array);
+    end;
+
     always_ff @(posedge clk) begin
         if (we == 1'b1)
             ram_array[{2'b0, Address[31:2]}] <= WriteData;

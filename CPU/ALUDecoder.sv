@@ -3,8 +3,11 @@ module ALUDecoder #()(
     input  [6:0]    func7,
     input  logic    op5,
     input  [1:0]    ALUOp,
+    input  logic    branch,
+    input  logic    zero,
 
-    output [2:0]    ALUControl_o
+    output [2:0]    ALUControl_o,
+    output          PCSrc_o
 );
 
 always_comb begin
@@ -27,6 +30,17 @@ always_comb begin
         end
         default: ALUControl_o = 3'b111; //Idk what to put as of yet
     endcase
+end
+
+always_comb begin
+            case(func3)
+                3'b001: begin   // for bne, branch if alu output not zero
+                    if(branch && !zero) begin 
+                            PCSrc_o = 1; 
+                    end                
+                end
+                default: PCSrc_o = 0;
+            endcase
 end
 
 endmodule

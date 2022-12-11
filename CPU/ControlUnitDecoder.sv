@@ -5,7 +5,7 @@ module ControlUnitDecoder #()(
     output  logic               ResultSrc_o,
     output  logic               MemWrite_o,
     output  logic               ALUSrc_o,
-    output  [1:0]               ImmSrc_o,
+    output  [2:0]               ImmSrc_o,
     output  logic               RegWrite_o,
     output  [1:0]               ALUOp_o
 );
@@ -27,9 +27,10 @@ typedef enum bit[6:0]   {
             RType: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
-                MemWrite_o  = 1'b0;
+                MemWrite_o  = 1'b1;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ALUOp_o     = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
             Load: begin
@@ -37,15 +38,16 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b1;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b1;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
             IType: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
-                ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ALUSrc_o    = 1'b1;
+                ALUOp_o     = 2'b00;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
             SType: begin
@@ -53,7 +55,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b1;
                 ALUSrc_o    = 1'b1;
-                ImmSrc_o    = 2'b01;
+                ImmSrc_o    = 3'b01;
                 RegWrite_o  = 1'b0;
             end
             BType: begin
@@ -61,15 +63,16 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b10;
+                ALUOp_o     = 2'b01;
+                ImmSrc_o    = 3'b10;
                 RegWrite_o  = 1'b0;
             end
-            AddUp: begin
+            AddUpp: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
             LoadUpp: begin
@@ -77,7 +80,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
             JumpImm: begin
@@ -85,7 +88,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b0;
             end
             JumpLink: begin
@@ -93,7 +96,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b0;
             end
             default: begin
@@ -101,7 +104,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 2'b0;
+                ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b0;
             end
         endcase
