@@ -1,13 +1,13 @@
 /* verilator lint_off UNOPTFLAT */
 
 module cpu #(
-    parameter   DATA_WIDTH = 32           // Parameters
+    parameter   DATA_WIDTH = 32            // Parameters
 )(
-    input logic                     clk,      // Input/Output Logic
+    input logic                     clk,   // Input/Output Logic
     input logic                     rst,
     output logic [DATA_WIDTH-1:0]   a0                  
 );
-    logic [DATA_WIDTH-1:0] ALUop1;          // Interconnecting Wires For ALU
+    logic [DATA_WIDTH-1:0] ALUop1;         // Interconnecting Wires For ALU
     logic [DATA_WIDTH-1:0] ALUout;
     logic [2:0]            ALUctrl;
     logic                  ALUsrc;
@@ -21,14 +21,14 @@ module cpu #(
     logic [DATA_WIDTH-1:0] ImmOp;          // Interconnecting Wires For Sign Extend
     logic [2:0]            ImmSrc;
 
-    logic [DATA_WIDTH-1:0] instr;           // Interconnecting Wires For PC
+    logic [DATA_WIDTH-1:0] instr;          // Interconnecting Wires For PC
     logic [DATA_WIDTH-1:0] pc;
     logic [DATA_WIDTH-1:0] next_pc;
     logic [DATA_WIDTH-1:0] PC_Plus4;
     logic                  PCsrc;
     logic                  PCsrcReg;
     
-    logic [DATA_WIDTH-1:0] ReadData;        // Interconnecting Wires For Data Memory
+    logic [DATA_WIDTH-1:0] ReadData;       // Interconnecting Wires For Data Memory
     logic                  MemWrite;
 
     RegFile RegFile (          

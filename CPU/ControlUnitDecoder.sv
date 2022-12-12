@@ -33,17 +33,24 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b1;
                 ALUSrc_o    = 1'b0;
-                ALUOp_o     = 2'b0;
+                ALUOp_o     = 2'b10;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             Load: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b1;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b1;
+                ALUOp_o     = 2'b0;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             IType: begin
                 Branch_o    = 1'b0;
@@ -53,14 +60,21 @@ typedef enum bit[6:0]   {
                 ALUOp_o     = 2'b10;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             SType: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b1;
                 ALUSrc_o    = 1'b1;
+                ALUOp_o     = 2'b0;
                 ImmSrc_o    = 3'b01;
                 RegWrite_o  = 1'b0;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             BType: begin
                 Branch_o    = 1'b1;
@@ -70,22 +84,33 @@ typedef enum bit[6:0]   {
                 ALUOp_o     = 2'b01;
                 ImmSrc_o    = 3'b10;
                 RegWrite_o  = 1'b0;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             AddUpp: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
+                ALUOp_o     = 2'b0;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             LoadUpp: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
+                ALUOp_o     = 2'b0;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
+                Jlink_o     = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                StorePC_o   = 1'b0;
             end
             JumpLink: begin
                 Branch_o    = 1'b0;
@@ -118,7 +143,11 @@ typedef enum bit[6:0]   {
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
                 ImmSrc_o    = 3'b0;
-                RegWrite_o  = 1'b0;
+                RegWrite_o  = 1'b0;            
+                Jlink_o     = 1'b0;
+                StorePC_o   = 1'b0;
+                PCSrcReg_o  = 1'b0;
+                ALUOp_o     = 2'b0;
             end
         endcase
     end

@@ -9,7 +9,7 @@ module InstrMem #(
 logic [DATA_WIDTH-1:0] rom_array [2**16-1:0];
 
 initial begin
-        $readmemh("sinegen.hex", rom_array);
+        $readmemh("Jumps.s.hex", rom_array);
 end;
         //output is asynchronous
 always_comb begin
