@@ -5,6 +5,7 @@ module ALUDecoder #()(
     input  logic    op4,
     input  [1:0]    ALUOp,
     input  logic    branch,
+    input  logic    Jlink,
     input  logic    zero,
 
     output [2:0]    ALUControl_o,
@@ -48,6 +49,10 @@ always_comb begin
                 end
                 default: PCSrc_o = 0;
             endcase
+            
+            if(Jlink) begin
+                PCSrc_o = 1;
+            end
 end
 
 endmodule

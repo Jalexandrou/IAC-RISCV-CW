@@ -5,6 +5,8 @@ module ControlUnit #(
     input   logic               zero_i,
 
 	output  logic               PCSrc_o,
+    output  logic               PCSrcReg_o,
+    output  logic               StorePC_o,
     output  logic               ResultSrc_o,
     output  logic               MemWrite_o,
     output  [2:0]               ALUControl_o,
@@ -18,6 +20,7 @@ module ControlUnit #(
     logic   [6:0]               func7;
     logic   [1:0]               ALUOp;
     logic                       branch;
+    logic                       Jlink;
 
     assign opcode = instr_i[6:0];
     assign func3 = instr_i[14:12];
@@ -33,18 +36,22 @@ module ControlUnit #(
         .ALUControl_o   (ALUControl_o),
         .branch         (branch),
         .zero           (zero_i),
+        .Jlink          (Jlink),
         .PCSrc_o        (PCSrc_o)
     );
 
     ControlUnitDecoder ControlUnitDecoder (
         .opcode_i       (opcode),
         .Branch_o       (branch),
+        .Jlink_o        (Jlink),
         .ResultSrc_o    (ResultSrc_o),
         .MemWrite_o     (MemWrite_o),
         .ALUSrc_o       (ALUSrc_o),
         .ImmSrc_o       (ImmSrc_o),
         .RegWrite_o     (RegWrite_o),
-        .ALUOp_o        (ALUOp)
+        .ALUOp_o        (ALUOp),
+        .PCSrcReg_o     (PCSrcReg_o),
+        .StorePC_o      (StorePC_o)
     );
     
 

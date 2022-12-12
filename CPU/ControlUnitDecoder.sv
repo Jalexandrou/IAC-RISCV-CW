@@ -2,24 +2,28 @@ module ControlUnitDecoder #()(
     input [6:0]                 opcode_i,
 
 	output  logic               Branch_o,
+    output  logic               Jlink_o,
     output  logic               ResultSrc_o,
     output  logic               MemWrite_o,
     output  logic               ALUSrc_o,
     output  [2:0]               ImmSrc_o,
     output  logic               RegWrite_o,
-    output  [1:0]               ALUOp_o
+    output  [1:0]               ALUOp_o,
+    output  logic               PCSrcReg_o,
+    output  logic               StorePC_o
 );
 
 typedef enum bit[6:0]   {
-        RType    =   7'b0110011,
-        Load     =   7'b0000011,
-        IType    =   7'b0010011,
-        SType    =   7'b0100011,
-        BType    =   7'b1100011,
-        AddUpp   =   7'b0010111,
-        LoadUpp  =   7'b0110111,
-        JumpImm  =   7'b1100111,
-        JumpLink =   7'b1101111
+        RType        =   7'b0110011,
+        Load         =   7'b0000011,
+        IType        =   7'b0010011,
+        SType        =   7'b0100011,
+        BType        =   7'b1100011,
+        AddUpp       =   7'b0010111,
+        LoadUpp      =   7'b0110111,
+        JumpLink     =   7'b1101111,
+        JumpLinkReg  =   7'b1100111
+        
     }                           Opcode;
 
     always_comb begin
@@ -83,21 +87,30 @@ typedef enum bit[6:0]   {
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
             end
-            JumpImm: begin
-                Branch_o    = 1'b0;
-                ResultSrc_o = 1'b0;
-                MemWrite_o  = 1'b0;
-                ALUSrc_o    = 1'b0;
-                ImmSrc_o    = 3'b0;
-                RegWrite_o  = 1'b0;
-            end
             JumpLink: begin
                 Branch_o    = 1'b0;
+                Jlink_o     = 1'b1;
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
+                ImmSrc_o    = 3'b11;
+                RegWrite_o  = 1'b1;
+                StorePC_o   = 1'b1;
+                PCSrcReg_o  = 1'b0;
+                ALUOp_o     = 2'b0;
+            end
+            JumpLinkReg: begin
+                Branch_o    = 1'b0;
+                Jlink_o     = 1'b0;
+                ResultSrc_o = 1'b0;
+                MemWrite_o  = 1'b0;
+                ALUSrc_o    = 1'b1;
+                ALUOp_o     = 2'b0;
                 ImmSrc_o    = 3'b0;
-                RegWrite_o  = 1'b0;
+                StorePC_o   = 1'b1;
+                PCSrcReg_o  = 1'b1;
+                RegWrite_o  = 1'b1;
+
             end
             default: begin
                 Branch_o    = 1'b0;

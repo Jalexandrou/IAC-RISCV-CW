@@ -16,6 +16,7 @@ module cpu #(
     logic [DATA_WIDTH-1:0] regOp2;         // Interconnecting Wires For RegFile
     logic                  RegWrite;
     logic                  ResultSrc;
+    logic                  StorePC;
 
     logic [DATA_WIDTH-1:0] ImmOp;          // Interconnecting Wires For Sign Extend
     logic [2:0]            ImmSrc;
@@ -23,7 +24,9 @@ module cpu #(
     logic [DATA_WIDTH-1:0] instr;           // Interconnecting Wires For PC
     logic [DATA_WIDTH-1:0] pc;
     logic [DATA_WIDTH-1:0] next_pc;
+    logic [DATA_WIDTH-1:0] PC_Plus4;
     logic                  PCsrc;
+    logic                  PCsrcReg;
     
     logic [DATA_WIDTH-1:0] ReadData;        // Interconnecting Wires For Data Memory
     logic                  MemWrite;
@@ -34,7 +37,7 @@ module cpu #(
         .ad2 (instr[24:20]),
         .ad3 (instr[11:7]),
         .we3 (RegWrite),
-        .wd3 (ResultSrc ? ReadData : ALUout),
+        .wd3 (StorePC ? PC_Plus4 : (ResultSrc ? ReadData : ALUout)),
         .rd1 (ALUop1),
         .rd2 (regOp2),
         .a0 (a0)
@@ -67,16 +70,21 @@ module cpu #(
     );
     
     PC_Next PCMux (
-        .PC_Next_o (next_pc),
         .PC_i (pc),
         .ImmOp_i (ImmOp),
-        .PCsrc_i (PCsrc)
+        .PC_Jalr_i (ALUout),
+        .PCsrc_i (PCsrc),
+        .PCsrcReg_i (PCsrcReg),
+        .PC_Next_o (next_pc),
+        .PC_Plus4_o (PC_Plus4)
     );
 
     ControlUnit ControlUnit (
         .instr_i (instr),
         .zero_i    (zero),
         .PCSrc_o (PCsrc),
+        .PCSrcReg_o (PCsrcReg),
+        .StorePC_o  (StorePC),
         .ResultSrc_o (ResultSrc),
         .MemWrite_o (MemWrite),
         .ALUControl_o (ALUctrl),
