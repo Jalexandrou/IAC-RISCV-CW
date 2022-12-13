@@ -9,7 +9,7 @@ module DataMem #(
     output logic [DATA_WIDTH-1:0]        ReadData
 );
 
-    logic [DATA_WIDTH-1:0] ram_array [2**16-1:0];
+    logic [DATA_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00001000];
 
     // initial begin
     //     $readmemh("sinerom.hex", ram_array);
