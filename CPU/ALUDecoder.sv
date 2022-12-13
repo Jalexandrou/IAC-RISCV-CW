@@ -9,7 +9,8 @@ module ALUDecoder #()(
     input  logic          zero,
 
     output [2:0]    ALUControl_o,
-    output          PCSrc_o
+    output  logic   PCSrc_o,
+    output  logic   ByteOp
 );
 
 always_comb begin
@@ -20,7 +21,7 @@ always_comb begin
             case(func3)
                 3'b001: begin
                     case(op4)
-                        1'b1: ALUControl_o = 3'b101;   //left shift for slli instruction
+                        1'b1:    ALUControl_o = 3'b101;   //left shift for slli instruction
                         default: ALUControl_o = 3'b000;
                     endcase
                 end 
@@ -36,7 +37,15 @@ always_comb begin
                 default: ALUControl_o = 3'b111; //Idk what to put as of yet
             endcase
         end
-        default: ALUControl_o = 3'b111; //Idk what to put as of yet
+        2'b11: begin
+               ALUControl_o = 3'b000;
+               if(func3==3'b000) ByteOp = 1;
+               else ByteOp = 0;
+        end
+        default: begin
+            ALUControl_o = 3'b111; //Idk what to put as of yet
+            ByteOp       = 0;
+        end
     endcase
 end
 

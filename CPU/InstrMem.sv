@@ -6,8 +6,9 @@ module InstrMem #(
     output logic    [INSTR_WIDTH-1:0]      instr
 );
 
-    logic [DATA_WIDTH-1:0] rom_array [32'hBFC00FFF:32h'BFC00000];
+    logic [DATA_WIDTH-1:0] rom_array [2**16-1:0];
 
+//32'hBFC00FFF:32'hBFC00000
 initial begin
         $readmemh("f1.s.hex", rom_array);
 end;
