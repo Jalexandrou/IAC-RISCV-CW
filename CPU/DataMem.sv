@@ -20,10 +20,10 @@ module DataMem #(
 
     always_ff @(posedge clk) begin
         if (we && !ByteOp) begin                 
-            ram_array[{2'b0, Address[31:2]}]   <= WriteData[31:24];       // Big endian storage  
-            ram_array[{2'b0, Address[31:2]}+1] <= WriteData[23:16];
-            ram_array[{2'b0, Address[31:2]}+2] <= WriteData[15:8];
-            ram_array[{2'b0, Address[31:2]}+3] <= WriteData[7:0];
+            ram_array[{Address[31:2], 2'b0}]   <= WriteData[31:24];       // Big endian storage  
+            ram_array[{Address[31:2], 2'b0}+1] <= WriteData[23:16];
+            ram_array[{Address[31:2], 2'b0}+2] <= WriteData[15:8];
+            ram_array[{Address[31:2], 2'b0}+3] <= WriteData[7:0];
         end
         else if (we && ByteOp) begin
             ram_array[Address] <= WriteData[7:0];
@@ -35,10 +35,10 @@ module DataMem #(
             ReadData = {24'b0, ram_array[Address][7:0]};
         end
         else begin
-            ReadData = {ram_array[{2'b0, Address[31:2]}], 
-                        ram_array[{2'b0, Address[31:2]}+1], 
-                        ram_array[{2'b0, Address[31:2]}+2], 
-                        ram_array[{2'b0, Address[31:2]}+3]};
+            ReadData = {ram_array[{Address[31:2], 2'b0}], 
+                        ram_array[{Address[31:2], 2'b0}+1], 
+                        ram_array[{Address[31:2], 2'b0}+2], 
+                        ram_array[{Address[31:2], 2'b0}+3]};
         end
     end
 
