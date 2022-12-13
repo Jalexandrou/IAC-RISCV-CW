@@ -20,7 +20,7 @@ always_comb begin
             case(func3)
                 3'b001: begin
                     case(op4)
-                        1'b1: ALUControl_o = 3'b110;   //left shift for slli instruction
+                        1'b1: ALUControl_o = 3'b101;   //left shift for slli instruction
                         default: ALUControl_o = 3'b000;
                     endcase
                 end 

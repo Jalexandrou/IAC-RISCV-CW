@@ -5,7 +5,7 @@ init:
     addi    a1, zero, 0x0       # a1 init to 0
 loop:
     addi    t1, t1, 0xA         # inc t1 with 10
-    jal     ra, inc           # jump to inc subroutine
+    jal     ra, inc             # jump to inc subroutine
     j       loop
 inc:
     addi    a0, a1, 0           # load a0 with a1
