@@ -16,11 +16,10 @@ module RegFile #(
     logic [DATA_WIDTH-1:0] reg_file [2**ADDRESS_WIDTH-1:0];
 
     always_ff @(posedge clk) begin
-        if (we3 == 1'b1)
+        if (we3 && ad3 !==0)
             reg_file[ad3] <= wd3;
     end
 
-    
     assign  rd1 = reg_file[ad1];
     assign  rd2 = reg_file[ad2];
     assign  a0  = reg_file[5'b1010];
