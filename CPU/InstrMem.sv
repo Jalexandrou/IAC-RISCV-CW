@@ -6,7 +6,7 @@ module InstrMem #(
     output logic    [INSTR_WIDTH-1:0]      instr
 );
 
-logic [DATA_WIDTH-1:0] rom_array [2**16-1:0];
+    logic [DATA_WIDTH-1:0] rom_array [32'hBFC00FFF:32h'BFC00000];
 
 initial begin
         $readmemh("Jumps.s.hex", rom_array);
