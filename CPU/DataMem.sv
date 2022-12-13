@@ -1,27 +1,45 @@
 module DataMem #(
     parameter   ADDRESS_WIDTH = 32,
-                DATA_WIDTH = 32
+                DATA_WIDTH = 32,
+                BYTE_WIDTH = 8
 )(
     input  logic                         clk,
     input  logic                         we,
+    input  logic                         ByteOp,
     input  logic [ADDRESS_WIDTH-1:0]     Address,
     input  logic [DATA_WIDTH-1:0]        WriteData,
     output logic [DATA_WIDTH-1:0]        ReadData
 );
 
-    logic [DATA_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00001000];
+    logic [BYTE_WIDTH-1:0] ram_array [2**16-1:0];   // set mem size
 
+    //32'h0001FFFF:32'h00001000
     // initial begin
     //     $readmemh("sinerom.hex", ram_array);
     // end;
 
     always_ff @(posedge clk) begin
-        if (we == 1'b1)
-            ram_array[{2'b0, Address[31:2]}] <= WriteData;
+        if (we && !ByteOp) begin                 
+            ram_array[{2'b0, Address[31:2]}]   <= WriteData[31:24];       // Big endian storage  
+            ram_array[{2'b0, Address[31:2]}+1] <= WriteData[23:16];
+            ram_array[{2'b0, Address[31:2]}+2] <= WriteData[15:8];
+            ram_array[{2'b0, Address[31:2]}+3] <= WriteData[7:0];
+        end
+        else if (we && ByteOp) begin
+            ram_array[Address] <= WriteData[7:0];
+        end
     end
 
     always_comb begin
-            ReadData = ram_array[{2'b0, Address[31:2]}];
+        if (ByteOp) begin
+            ReadData = {24'b0, ram_array[Address][7:0]};
+        end
+        else begin
+            ReadData = {ram_array[{2'b0, Address[31:2]}], 
+                        ram_array[{2'b0, Address[31:2]}+1], 
+                        ram_array[{2'b0, Address[31:2]}+2], 
+                        ram_array[{2'b0, Address[31:2]}+3]};
+        end
     end
 
 endmodule

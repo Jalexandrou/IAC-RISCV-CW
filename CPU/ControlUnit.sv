@@ -9,6 +9,7 @@ module ControlUnit #(
     output  logic               StorePC_o,
     output  logic               ResultSrc_o,
     output  logic               MemWrite_o,
+    output  logic               ByteOp,
     output  [2:0]               ALUControl_o,
     output  logic               ALUSrc_o,
     output  [2:0]               ImmSrc_o,
@@ -37,7 +38,8 @@ module ControlUnit #(
         .branch         (branch),
         .zero           (zero_i),
         .Jlink          (Jlink),
-        .PCSrc_o        (PCSrc_o)
+        .PCSrc_o        (PCSrc_o),
+        .ByteOp         (ByteOp)
     );
 
     ControlUnitDecoder ControlUnitDecoder (

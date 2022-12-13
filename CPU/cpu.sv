@@ -30,6 +30,7 @@ module cpu #(
     
     logic [DATA_WIDTH-1:0] ReadData;       // Interconnecting Wires For Data Memory
     logic                  MemWrite;
+    logic                  ByteOp;
 
     RegFile RegFile (          
         .clk (clk),
@@ -81,7 +82,7 @@ module cpu #(
 
     ControlUnit ControlUnit (
         .instr_i (instr),
-        .zero_i    (zero),
+        .zero_i   (zero),
         .PCSrc_o (PCsrc),
         .PCSrcReg_o (PCsrcReg),
         .StorePC_o  (StorePC),
@@ -90,14 +91,16 @@ module cpu #(
         .ALUControl_o (ALUctrl),
         .ALUSrc_o (ALUsrc),
         .ImmSrc_o (ImmSrc),
+        .ByteOp   (ByteOp),
         .RegWrite_o (RegWrite)
     );
     
     DataMem DataMem (
         .clk (clk),
+        .we (MemWrite),
+        .ByteOp  (ByteOp),
         .Address (ALUout),
         .WriteData (regOp2),
-        .we (MemWrite),  
         .ReadData (ReadData)
     );
     

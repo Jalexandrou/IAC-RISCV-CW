@@ -45,7 +45,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b1;
                 MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b1;
-                ALUOp_o     = 2'b0;
+                ALUOp_o     = 2'b11;
                 ImmSrc_o    = 3'b0;
                 RegWrite_o  = 1'b1;
                 Jlink_o     = 1'b0;
@@ -69,7 +69,7 @@ typedef enum bit[6:0]   {
                 ResultSrc_o = 1'b0;
                 MemWrite_o  = 1'b1;
                 ALUSrc_o    = 1'b1;
-                ALUOp_o     = 2'b0;
+                ALUOp_o     = 2'b11;
                 ImmSrc_o    = 3'b01;
                 RegWrite_o  = 1'b0;
                 Jlink_o     = 1'b0;
