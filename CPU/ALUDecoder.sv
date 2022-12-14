@@ -4,12 +4,8 @@ module ALUDecoder #()(
     input  logic          op5,
     input  logic          op4,
     input  logic [2:0]    ALUOp,
-    input  logic          branch,
-    input  logic          Jlink,
-    input  logic          zero,
 
     output [2:0]    ALUControl_o,
-    output  logic   PCSrc_o,
     output  logic   ByteOp
 );
 
@@ -51,16 +47,5 @@ always_comb begin
     endcase
 end
 
-always_comb begin
-    casez({Jlink, func3})
-        4'b1???: PCSrc_o = 1;
-        4'b0001: begin   // for bne, branch if alu output not zero
-            if(branch && !zero) begin 
-                PCSrc_o = 1; 
-            end                
-        end
-        default: PCSrc_o = 0;
-    endcase
-end
 
 endmodule
