@@ -1,10 +1,9 @@
 module ControlUnit #(
     parameter INSTR_WIDTH = 32
 )(
-	input   [INSTR_WIDTH-1:0]   instr_i,
-    input   logic               zero_i,
+    input   [INSTR_WIDTH-1:0]   instr_i,
 
-	output  logic               Jlink_o,
+    output  logic               Jlink_o,
     output  logic               branch_o,
     output  logic               PCSrcReg_o,
     output  logic               StorePC_o,
@@ -38,10 +37,6 @@ module ControlUnit #(
         .op4            (opcode[4]),
         .ALUOp          (ALUOp),
         .ALUControl_o   (ALUControl_o),
-        .branch         (branch),
-        .zero           (zero_i),
-        .Jlink          (Jlink),
-        .PCSrc_o        (PCSrc_o),
         .ByteOp         (ByteOp)
     );
 
