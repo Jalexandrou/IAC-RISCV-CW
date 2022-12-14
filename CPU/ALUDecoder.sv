@@ -3,7 +3,7 @@ module ALUDecoder #()(
     input  logic [6:0]    func7,
     input  logic          op5,
     input  logic          op4,
-    input  logic [1:0]    ALUOp,
+    input  logic [2:0]    ALUOp,
     input  logic          branch,
     input  logic          Jlink,
     input  logic          zero,
@@ -14,10 +14,11 @@ module ALUDecoder #()(
 );
 
 always_comb begin
+    ByteOp = 0;
     case(ALUOp)
-        2'b00: ALUControl_o = 3'b000;
-        2'b01: ALUControl_o = 3'b001;
-        2'b10: begin
+        3'b00: ALUControl_o = 3'b000;
+        3'b01: ALUControl_o = 3'b001;
+        3'b10: begin
             case(func3)
                 3'b001: begin
                     case(op4)
@@ -37,11 +38,12 @@ always_comb begin
                 default: ALUControl_o = 3'b111; //Idk what to put as of yet
             endcase
         end
-        2'b11: begin
+        3'b11: begin
                ALUControl_o = 3'b000;
-               if(func3==3'b000) ByteOp = 1;
+               if(func3==3'b000 | func3==3'b100) ByteOp = 1;
                else ByteOp = 0;
         end
+        3'b100: ALUControl_o = 3'b110;
         default: begin
             ALUControl_o = 3'b111; //Idk what to put as of yet
             ByteOp       = 0;

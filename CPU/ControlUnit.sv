@@ -19,7 +19,7 @@ module ControlUnit #(
     logic   [6:0]               opcode;
     logic   [2:0]               func3;
     logic   [6:0]               func7;
-    logic   [1:0]               ALUOp;
+    logic   [2:0]               ALUOp;
     logic                       branch;
     logic                       Jlink;
 
