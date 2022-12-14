@@ -6,11 +6,10 @@ module InstrMem #(
     output logic    [INSTR_WIDTH-1:0]      instr
 );
 
-    logic [DATA_WIDTH-1:0] rom_array [2**16-1:0];
+    logic [DATA_WIDTH-1:0] rom_array [32'hBFC00FFF:32'hBFC00000];
 
-//32'hBFC00FFF:32'hBFC00000
 initial begin
-        $readmemh("f1.s.hex", rom_array);
+        $readmemh("pdf.s.hex", rom_array);
 end;
         //output is asynchronous
 always_comb begin

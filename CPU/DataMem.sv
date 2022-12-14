@@ -11,12 +11,11 @@ module DataMem #(
     output logic [DATA_WIDTH-1:0]        ReadData
 );
 
-    logic [BYTE_WIDTH-1:0] ram_array [2**16-1:0];   // set mem size
+    logic [BYTE_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00000000];   // set mem size
 
-    //32'h0001FFFF:32'h00001000
-    // initial begin
-    //     $readmemh("sinerom.hex", ram_array);
-    // end;
+    initial begin
+        $readmemh("gaussian.mem", ram_array, 32'h10000);
+    end;
 
     always_ff @(posedge clk) begin
         if (we && !ByteOp) begin                 
@@ -32,7 +31,7 @@ module DataMem #(
 
     always_comb begin
         if (ByteOp) begin
-            ReadData = {24'b0, ram_array[Address][7:0]};
+            ReadData = {24'b0, ram_array[Address]};
         end
         else begin
             ReadData = {ram_array[{Address[31:2], 2'b0}], 
