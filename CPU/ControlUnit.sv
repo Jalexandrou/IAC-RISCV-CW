@@ -4,7 +4,8 @@ module ControlUnit #(
 	input   [INSTR_WIDTH-1:0]   instr_i,
     input   logic               zero_i,
 
-	output  logic               PCSrc_o,
+	output  logic               Jlink_o,
+    output  logic               branch_o,
     output  logic               PCSrcReg_o,
     output  logic               StorePC_o,
     output  logic               ResultSrc_o,
@@ -26,6 +27,8 @@ module ControlUnit #(
     assign opcode = instr_i[6:0];
     assign func3 = instr_i[14:12];
     assign func7 = instr_i[31:25];
+    assign jlink_o = jlink;
+    assign branch_o = branch;
 
 
     ALUDecoder ALUDecoder (
