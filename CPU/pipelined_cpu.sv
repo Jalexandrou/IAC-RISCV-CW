@@ -31,6 +31,8 @@ module cpu #(
     logic [DATA_WIDTH-1:0] RD1;        
     logic [DATA_WIDTH-1:0] RD2;
     logic [DATA_WIDTH-1:0] RdD;
+    logic                  branchD;
+    logic                  JlinkD;
 
 //interconnecting wires before third pipeline register
     logic [DATA_WIDTH-1:0] PCE;
@@ -52,7 +54,9 @@ module cpu #(
     logic                  PCsrcE;
     logic                  PCsrcRegE;
     logic                  StorePCE;
-
+    logic                  branchE;
+    logic                  JlinkE;
+    
 //interconnecting wires before fourth pipeline register
     logic [DATA_WIDTH-1:0] PC_Plus4M;
     logic [DATA_WIDTH-1:0] RdM;      
@@ -132,11 +136,15 @@ module cpu #(
         .ALUSrc_o (ALUSrcD),
         .ImmSrc_o (ImmSrcD),
         .RegWrite_o (RegWriteD),
+        .branch_o(BranchD),
+        .Jlink_o(JlinkD)
+        .ByteOp(ByteOpD),
     );
 
+    assign PCSrcRE= (branchE && !ZeroE | JlinkE) ;
+    
     always_ff @ (negedge clk)
         // register after control unit and register file
-        PCsrcE <= PCsrcD;
         PCsrcRegE <= PCsrcRegD;
         RD1E <= RD1;
         RD2E <= RD2;
@@ -151,7 +159,10 @@ module cpu #(
         ALUSrcE <= ALUSrcD;
         ImmSrcE <= ImmSrcD;
         StorePCE <= StorePCD;
-
+        branchE <= branchD;
+        JlinkE <= JlinkD;
+        ByteOpE <= ByteOpD;
+    
     ALU ALU (
         .ALUop1 (RD1E),
         .ALUop2 (ALUSrcE ? ImmExtE : RD2E),
@@ -163,20 +174,23 @@ module cpu #(
     always_ff @ (negedge clk)
         //register after ALU
         ALUResultM <= ALUResultE;
-        WriteDataM <= WriteDataM;
+        WriteDataM <= WriteDataE;
         RdM <= RdE;
         PCPlus4M <= PCPlus4E;
         RegWriteM <= RegWriteE;
         ResultSrcM <= ResultSrcE;
         MemWriteM <= MemWriteE;
         StorePCM <= StorePCE;
+        ByteOpM <= ByteOpE;
 
     DataMem DataMem (
         .clk (clk),
         .Address (ALUResultM),
         .WriteData (WriteDataM),
         .we (MemWriteM),  
+        .ByteOp  (ByteOpM),
         .ReadData (ReadDataM)
+        
     );
     
     always_ff @ (negedge clk)
