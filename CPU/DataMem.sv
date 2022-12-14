@@ -31,7 +31,7 @@ module DataMem #(
 
     always_comb begin
         if (ByteOp) begin
-            ReadData = {24'b0, ram_array[Address]};
+            ReadData = ram_array[Address];
         end
         else begin
             ReadData = {ram_array[{Address[31:2], 2'b0}], 
