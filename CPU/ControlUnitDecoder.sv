@@ -31,7 +31,7 @@ typedef enum bit[6:0]   {
             RType: begin
                 Branch_o    = 1'b0;
                 ResultSrc_o = 1'b0;
-                MemWrite_o  = 1'b1;
+                MemWrite_o  = 1'b0;
                 ALUSrc_o    = 1'b0;
                 ALUOp_o     = 3'b10;
                 ImmSrc_o    = 3'b0;
