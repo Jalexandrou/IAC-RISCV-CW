@@ -51,6 +51,7 @@ module cpu #(
     logic                  ZeroE;
     logic                  PCsrcE;
     logic                  PCsrcRegE;
+    logic                  StorePCE;
 
 //interconnecting wires before fourth pipeline register
     logic [DATA_WIDTH-1:0] PC_Plus4M;
@@ -61,6 +62,7 @@ module cpu #(
     logic                  RegWriteM;
     logic [1:0]            ResultSrcM;
     logic                  MemWriteM;
+    logic                  StorePCM;
 
 //interconnecting wires after fourth pipeline register
     logic                  RegWriteW;
@@ -68,12 +70,13 @@ module cpu #(
     logic [DATA_WIDTH-1:0] ReadDataW;     
     logic [DATA_WIDTH-1:0] RdW;      
     logic [DATA_WIDTH-1:0] PC_Plus4W;
+    logic                  StorePCW;
 
 
     PC_Next PCMux (
         .PC_i (PCF),
         .PC_i2 (PCE),
-        .ImmOp_i (ImmExtE), //needs to change
+        .ImmOp_i (ImmExtE),
         .PC_Jalr_i (ALUResultE),
         .PCsrc_i (PCsrcE),
         .PCsrcReg_i (PCsrcRegE),
@@ -99,15 +102,13 @@ module cpu #(
         PCD <= PCF;
         PCPlus4D <= PCPlus4F;
 
-//correct until here 
-
     RegFile RegFile (          
         .clk (clk),
         .ad1 (InstrD[19:15]),
         .ad2 (InstrD[24:20]),
         .ad3 (RdW),
         .we3 (RegWriteW),
-        .wd3 (StorePC ? PC_Plus4 : (ResultSrc ? ReadData : ALUout)), //needs to change
+        .wd3 (StorePCW ? PC_Plus4 : (ResultSrcW ? ReadDataW : ALUResultM)), 
         .rd1 (RD1),
         .rd2 (RD2),
         .a0 (a0)
@@ -124,7 +125,7 @@ module cpu #(
         .zero_i  (ZeroE),
         .PCSrc_o (PCsrcD),
         .PCSrcReg_o (PCsrcRegD),
-        .StorePC_o  (StorePCD), //needs to be changed 
+        .StorePC_o  (StorePCD), 
         .ResultSrc_o (ResultSrcD),
         .MemWrite_o (MemWriteD),
         .ALUControl_o (ALUControlD),
@@ -149,6 +150,7 @@ module cpu #(
         ALUControlE <= ALUControlD;
         ALUSrcE <= ALUSrcD;
         ImmSrcE <= ImmSrcD;
+        StorePCE <= StorePCD;
 
     ALU ALU (
         .ALUop1 (RD1E),
@@ -167,7 +169,8 @@ module cpu #(
         RegWriteM <= RegWriteE;
         ResultSrcM <= ResultSrcE;
         MemWriteM <= MemWriteE;
-    
+        StorePCM <= StorePCE;
+
     DataMem DataMem (
         .clk (clk),
         .Address (ALUResultM),
@@ -183,5 +186,6 @@ module cpu #(
         PCPlus4W <= PCPlus4M;
         RegWriteW <= RegWriteM;
         ResultSrcW <= ResultSrcM;
+        StorePCW <= StorePCM;
 
 endmodule
