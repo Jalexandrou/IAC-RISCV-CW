@@ -8,7 +8,7 @@ module ALU #(
     output logic                    zero_o
 );
 
-    typedef enum bit[2:0] {ADD, SUBTRACT, AND, OR, SLT, LSHIFT} func;
+    typedef enum bit[2:0] {ADD, SUBTRACT, AND, OR, SLT, LSHIFT, PASSOP2} func;
 
     always_comb begin
         case(ALUctrl)
@@ -18,6 +18,7 @@ module ALU #(
             OR: ALUout = ALUop1 | ALUop2;
             SLT: ALUout = (ALUop1 < ALUop2) ? 1 : 0;
             LSHIFT: ALUout = ALUop1 << ALUop2;
+            PASSOP2: ALUout = ALUop2;
             default: ALUout = ALUop1 + ALUop2;
         endcase
     end;
