@@ -68,7 +68,8 @@ module cpu #(
         .PC_o         (pc),
         .PC_Next_i    (next_pc),
         .clk          (clk),
-        .rst          (rst)
+        .rst          (rst),
+        .trg          (trg)
     );
     
     PC_Next PCMux (
