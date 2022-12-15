@@ -5,6 +5,7 @@ module cpu #(
 )(
     input logic                     clk,   // Input/Output Logic
     input logic                     rst,
+    input logic                     trg,
     output logic [DATA_WIDTH-1:0]   a0                  
 );
     logic [DATA_WIDTH-1:0] ALUop1;         // Interconnecting Wires For ALU
