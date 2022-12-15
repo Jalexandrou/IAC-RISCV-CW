@@ -38,20 +38,20 @@ module DataMem #(
     end
 
     always_comb begin
-    if (ByteOp) begin
-        if((cache_array[44:32] == Address [31:10]) && cache_array[45] == 1) begin
-            ReadData = cache_array[Address[10:2]];
+        if (ByteOp) begin
+            if((cache_array[44:32] == Address [31:10]) && cache_array[45] == 1) begin
+               ReadData = cache_array[Address[10:2]];
+            end
+            else begin
+                ReadData = ram_array[Address];
+            end
         end
         else begin
-            ReadData = ram_array[Address];
+            ReadData = {ram_array[{Address[31:2], 2'b0}], 
+                        ram_array[{Address[31:2], 2'b0}+1], 
+                        ram_array[{Address[31:2], 2'b0}+2], 
+                        ram_array[{Address[31:2], 2'b0}+3]};
         end
-    end
-    else begin
-        ReadData = {ram_array[{Address[31:2], 2'b0}], 
-                    ram_array[{Address[31:2], 2'b0}+1], 
-                    ram_array[{Address[31:2], 2'b0}+2], 
-                    ram_array[{Address[31:2], 2'b0}+3]};
-    end
     end
 
 endmodule
