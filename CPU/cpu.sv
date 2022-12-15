@@ -99,12 +99,13 @@ module cpu #(
         .PC     (PCF)
     );
 
-    always_ff @ (negedge clk)
+    always_ff @ (negedge clk) begin
     //register after instruction memory
         InstrD <= RD;
         PCD <= PCF;
         PCPlus4D <= PCPlus4F;
-
+    end 
+    
     RegFile RegFile (          
         .clk (clk),
         .ad1 (InstrD[19:15]),
@@ -140,7 +141,7 @@ module cpu #(
     );
 
     
-    always_ff @ (negedge clk)
+    always_ff @ (negedge clk) begin
         // register after control unit and register file
         PCsrcRegE <= PCsrcRegD;
         RD1E <= RD1;
@@ -159,7 +160,8 @@ module cpu #(
         branchE <= branchD;
         JlinkE <= JlinkD;
         ByteOpE <= ByteOpD;
-
+    end 
+    
     ALU ALU (
         .ALUop1 (RD1E),
         .ALUop2 (ALUSrcE ? ImmExtE : RD2E),
@@ -168,7 +170,7 @@ module cpu #(
         .ALUctrl (ALUControlE)
     );
 
-    always_ff @ (negedge clk)
+    always_ff @ (negedge clk) begin
         //register after ALU
         ALUResultM <= ALUResultE;
         WriteDataM <= WriteDataE;
@@ -179,7 +181,8 @@ module cpu #(
         MemWriteM <= MemWriteE;
         StorePCM <= StorePCE;
         ByteOpM <= ByteOpE;
-
+    end 
+    
     DataMem DataMem (
         .clk (clk),
         .Address (ALUResultM),
@@ -189,7 +192,7 @@ module cpu #(
         .ReadData (ReadDataM)
     );
     
-    always_ff @ (negedge clk)
+    always_ff @ (negedge clk) begin 
         //register after data memory
         ReadDataW <= Rd;
         RdW <= RdM;
@@ -197,5 +200,6 @@ module cpu #(
         RegWriteW <= RegWriteM;
         ResultSrcW <= ResultSrcM;
         StorePCW <= StorePCM;
+    end 
 
 endmodule
