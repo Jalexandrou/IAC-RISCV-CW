@@ -6,8 +6,8 @@ main:
 wait:
     j       wait               # loop forever
 loop:
-    jal     ra, reset          # execute reset subroutine
     jal     ra, shift          # execute shift subroutine
+    jal     ra, reset          # execute reset subroutine
     j       wait
 init:
     addi    t1, zero, 0xFF     # load t1 with 255
