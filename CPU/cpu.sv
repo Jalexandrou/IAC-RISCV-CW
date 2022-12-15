@@ -166,7 +166,7 @@ module cpu #(
         .ALUctrl (ALUControlE)
     );
 
-    assign PCsrcE = (branchE & !ZeroE) || JlinkE;
+    assign PCsrcE = (branchE && !ZeroE) || JlinkE;
     
     always_ff @ (negedge clk) begin
         //register after ALU
