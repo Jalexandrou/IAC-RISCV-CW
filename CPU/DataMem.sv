@@ -2,6 +2,7 @@ module DataMem #(
     parameter   ADDRESS_WIDTH = 32,
                 DATA_WIDTH = 32,
                 BYTE_WIDTH = 8
+                CACHE_SIZE = 64
 )(
     input  logic                         clk,
     input  logic                         we,
@@ -12,6 +13,7 @@ module DataMem #(
 );
 
     logic [BYTE_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00000000];   // set mem size
+    logic [DATA_WIDTH-1:0] cache_array [CACHE_SIZE-1:0][2:0];
 
     initial begin
         $readmemh("gaussian.mem", ram_array, 32'h10000);
