@@ -4,12 +4,14 @@ module PC_Register #(
     // interface signals
     input logic                 clk,          //clock
     input logic                 rst,          //reset
+    input logic                 trg,          //trigger
     input logic  [WIDTH-1:0]    PC_Next_i,    //PC Input 
     output logic [WIDTH-1:0]    PC_o          //PC Output
 );
 
 always_ff @ (posedge clk)
-    if (rst) PC_o <= {WIDTH{1'b0}};       
+    if (rst) PC_o <= {WIDTH{1'b0}};
+    else if (trg) PC_o <= {32'b101};
     else     PC_o <= PC_Next_i;
     
 endmodule
