@@ -1,11 +1,13 @@
 #include "Vcpu.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include "vbuddy.cpp"
 
 
 int main(int argc, char **argv, char **env) {
     int i;
     int clk;
+    bool flag;
 
     Verilated::commandArgs(argc, argv);
     Vcpu* top = new Vcpu;
@@ -16,9 +18,14 @@ int main(int argc, char **argv, char **env) {
     top->trace(tfp, 99);
     tfp->open ("cpu.vcd");
 
+    if (vbdOpen()!=1) return (-1);
+    vbdHeader("F1 Sequence");
+
     top->clk = 0;
     top->rst = 0;
     top->trg = 0;
+
+    vbdSetMode(1);
 
     for (i=0; i<10000; i++) {
 
@@ -28,7 +35,12 @@ int main(int argc, char **argv, char **env) {
             top->eval ();
         }
 
-        top->trg = (i == 16);
+        flag = vbdFlag();
+        top->rst = flag && (vbdValue() == 0);
+        top->trg = flag && (vbdValue() == 1);
+        vbdBar(top->a0 & 0xFF);
+        vbdCycle(i);
+        
 
         if (Verilated::gotFinish()){     
             tfp->close();
