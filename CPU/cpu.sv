@@ -3,8 +3,7 @@ module cpu #(
 )(
     input logic                     clk,   // Input/Output Logic
     input logic                     rst,
-    output logic [DATA_WIDTH-1:0]   a0,   
-
+    output logic [DATA_WIDTH-1:0]   a0
 );
 
 //interconnecting wires before first pipeline register
@@ -139,7 +138,6 @@ module cpu #(
         .ByteOp(ByteOpD)
     );
 
-    
     always_ff @ (negedge clk) begin
         // register after control unit and register file
         PCsrcRegE <= PCsrcRegD;
@@ -159,8 +157,6 @@ module cpu #(
         JlinkE <= JlinkD;
         ByteOpE <= ByteOpD;
     end 
-    
-    assign PCsrcE= branchE & !ZeroE | JlinkE;
 
     ALU ALU (
         .ALUop1 (RD1E),
@@ -170,6 +166,8 @@ module cpu #(
         .ALUctrl (ALUControlE)
     );
 
+    assign PCsrcE = (branchE & !ZeroE) || JlinkE;
+    
     always_ff @ (negedge clk) begin
         //register after ALU
         ALUResultM <= ALUResultE;
