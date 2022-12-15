@@ -20,14 +20,12 @@ module ControlUnit #(
     logic   [2:0]               func3;
     logic   [6:0]               func7;
     logic   [2:0]               ALUOp;
-    logic                       branch;
-    logic                       Jlink;
+
 
     assign opcode = instr_i[6:0];
     assign func3 = instr_i[14:12];
     assign func7 = instr_i[31:25];
-    assign Jlink_o = Jlink;
-    assign branch_o = branch;
+
 
 
     ALUDecoder ALUDecoder (
@@ -42,8 +40,8 @@ module ControlUnit #(
 
     ControlUnitDecoder ControlUnitDecoder (
         .opcode_i       (opcode),
-        .Branch_o       (branch),
-        .Jlink_o        (Jlink),
+        .Branch_o       (branch_o),
+        .Jlink_o        (Jlink_o),
         .ResultSrc_o    (ResultSrc_o),
         .MemWrite_o     (MemWrite_o),
         .ALUSrc_o       (ALUSrc_o),
