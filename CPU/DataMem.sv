@@ -27,9 +27,13 @@ module DataMem #(
             ram_array[{Address[31:2], 2'b0}+1] <= WriteData[23:16];
             ram_array[{Address[31:2], 2'b0}+2] <= WriteData[15:8];
             ram_array[{Address[31:2], 2'b0}+3] <= WriteData[7:0];
+            
+            cache_array[Address[10:2]] <= WriteData;
         end
         else if (we && ByteOp) begin
             ram_array[Address] <= WriteData[7:0];
+            
+            cache_array[Address[10:2]] <= WriteData;
         end
     end
 
