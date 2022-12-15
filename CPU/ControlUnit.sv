@@ -21,11 +21,9 @@ module ControlUnit #(
     logic   [6:0]               func7;
     logic   [2:0]               ALUOp;
 
-
     assign opcode = instr_i[6:0];
     assign func3 = instr_i[14:12];
     assign func7 = instr_i[31:25];
-
 
 
     ALUDecoder ALUDecoder (
