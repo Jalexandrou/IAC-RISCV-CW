@@ -136,8 +136,8 @@ module cpu #(
         .ImmSrc_o (ImmSrcD),
         .RegWrite_o (RegWriteD),
         .branch_o(BranchD),
-        .Jlink_o(JlinkD)
-        .ByteOp(ByteOpD),
+        .Jlink_o(JlinkD),
+        .ByteOp(ByteOpD)
     );
 
     
