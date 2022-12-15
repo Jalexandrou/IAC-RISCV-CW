@@ -26,7 +26,6 @@ module cpu #(
     logic                  MemWriteD;
     logic [2:0]            ALUControlD;
     logic                  ALUSrcD;
-    logic                  PCsrcD;
     logic                  PCsrcRegD;
     logic [DATA_WIDTH-1:0] RD1;        
     logic [DATA_WIDTH-1:0] RD2;
@@ -127,7 +126,6 @@ module cpu #(
     ControlUnit ControlUnit (
         .instr_i (InstrD),
         .zero_i  (ZeroE),
-        .PCSrc_o (PCsrcD),
         .PCSrcReg_o (PCsrcRegD),
         .StorePC_o  (StorePCD), 
         .ResultSrc_o (ResultSrcD),
