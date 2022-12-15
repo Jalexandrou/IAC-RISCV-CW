@@ -26,7 +26,7 @@ module ControlUnit #(
     assign opcode = instr_i[6:0];
     assign func3 = instr_i[14:12];
     assign func7 = instr_i[31:25];
-    assign jlink_o = jlink;
+    assign Jlink_o = Jlink;
     assign branch_o = branch;
 
 
