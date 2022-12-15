@@ -160,7 +160,7 @@ module cpu #(
         ByteOpE <= ByteOpD;
     end 
     
-    assign PCsrcE= branchE && !ZeroE | JlinkE;
+    assign PCsrcE= branchE & !ZeroE | JlinkE;
 
     ALU ALU (
         .ALUop1 (RD1E),
