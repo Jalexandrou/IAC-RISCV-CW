@@ -2,10 +2,13 @@
 #memory needs to be mapped correctly
 main:
     jal     ra, init           # execute init subroutine
+    j       wait
+wait:
+    j       wait               # loop forever
 loop:
     jal     ra, reset          # execute reset subroutine
     jal     ra, shift          # execute shift subroutine
-    j       loop               # loop forever
+    j       wait
 init:
     addi    t1, zero, 0xFF     # load t1 with 255
     ret
