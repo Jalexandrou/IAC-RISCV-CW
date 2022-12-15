@@ -11,7 +11,7 @@ module PC_Register #(
 
 always_ff @ (posedge clk)
     if (rst) PC_o <= {WIDTH{1'b0}};
-    else if (trg) PC_o <= {32'b101};
+    else if (trg) PC_o <= {32'b1100};
     else     PC_o <= PC_Next_i;
     
 endmodule
