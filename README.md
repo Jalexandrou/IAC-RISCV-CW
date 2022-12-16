@@ -24,8 +24,8 @@
 | cache |  | * |  |  |
 | testing |  |  |  |  |
 
-* Principle Contributor
+Principle Contributor: *
 
-x Also Helped
+Also Helped: x
 
 
