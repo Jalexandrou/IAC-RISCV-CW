@@ -9,6 +9,8 @@ Our team has completed the design and verification of a single-cycle RV32I proce
 
 To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below.
 
+*Thanks to Peter Cheung & all of the GTAs & UTAs who helped to put this project together.*
+
 ___
 
 ## Table for Individual Contributions
