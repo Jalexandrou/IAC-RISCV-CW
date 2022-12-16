@@ -85,7 +85,7 @@ Relevant Commit: [Added PC Next for pipelined version](https://github.com/EIE2-I
 
 [Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/pipelining/src/myprog/f1.s)
 
-In order to prevent pipeline hazards, I added nop instruction (addi zero, zero, 0) in the f1 program. 
+In order to prevent pipeline hazards, I added nop instruction (addi zero, zero, 0) in the f1 program. I also tested the pipelined CPU with the changed program to make sure that everything was working. 
 
 Relevant Commit: [Added Nops](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/63de4b4d7d5f6b7ee30f89661105dfa00921bb3d)
 
