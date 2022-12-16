@@ -3,6 +3,7 @@ module cpu #(
 )(
     input logic                     clk,   // Input/Output Logic
     input logic                     rst,
+    input logic                     trg,
     output logic [DATA_WIDTH-1:0]   a0
 );
 
@@ -90,7 +91,8 @@ module cpu #(
         .PC_o         (PCF),
         .PC_Next_i    (next_pc),
         .clk          (clk),
-        .rst          (rst)
+        .rst          (rst),
+        .trg          (trg)
     );
     
     InstrMem InstrMem (
