@@ -10,7 +10,7 @@
 | ALUDecoder.sv |  |  |  |  |
 | ControlUnit.sv |  |  |  |  |
 | ControlUnitDecoder.sv |  | x |  |  |
-| DataMem.sv |  | * | |  |
+| DataMem.sv |  | * | * |  |
 | InstructionMem.sv |  |  |  |  |
 | PC_Next.sv |  |  |  |  |
 | PC_Register.sv |  |  |  |  |
@@ -25,6 +25,7 @@
 | testing |  |  |  |  |
 
 * Principle Contributor
+
 x Also Helped
 
 
