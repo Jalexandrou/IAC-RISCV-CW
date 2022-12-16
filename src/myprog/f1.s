@@ -33,7 +33,11 @@ reset:
     NOP                        # control hazard
     NOP                        # control hazard
     ret
+    NOP
+    NOP
 shift:
+    NOP
+    NOP
     addi    a0, a1, 0          # load a0 with a1 
     NOP                        # control hazard
     NOP                        # control hazard
