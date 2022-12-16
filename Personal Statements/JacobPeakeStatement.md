@@ -21,7 +21,7 @@ ___
 ### ALU
 ___
 
-*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/ALU.sv)*
+*[ALU.sv](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/ALU.sv)*
 
 The ALU.sv module was copied from Laboratory 4 with some changes. Implementing the ALU taught me how to use enumeration, specifying an enumerated type `func` which characterised all of the ALU operations as numbers corresponding to the value of `ALUctrl` that determines that operation. 
 
@@ -32,7 +32,7 @@ ___
 ### Data Memory
 ___
 
-*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/DataMem.sv)*
+*[DataMem.sv](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/DataMem.sv)*
 
 For the DataMem.sv module, we must define the memory with respect to the memory map given to us in the project brief- requiring the Data Memory to be defined by address values h'0001FFFF & h'00000000. On the positive edge of the clock, if `we = 1`, then data is written into memory at the specified address. This is done with byte addressing if the value of `ByteOp` is 0.
 
@@ -44,20 +44,26 @@ ___
 ### Register File
 ___
 
-*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/RegFile.sv)*
+*[RegFile.sv](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/RegFile.sv)*
 
+Implementing the RegFile.sv module was straightforward, it has the functionality to simply pass the values at address `ad1` & `ad2` to outputs `rd1` & `rd2` to read data from the registers- and if `we=1` it must write the value `wd3` to the register at address `ad3`. 
 
+The only specific decision that must be made for this RegFile is to also output the value `a0`- which is the register located at address x10 of the RegFile in a RV32I RISC-V processor.
 ___
 ### CPU
 ___
 
-*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/cpu.sv)*
+*[cpu.sv](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/cpu.sv)*
+
+This is a structural module for the sigle cycle processor that connects each of the RTL components together. It defines the intput/output logic, interconnecting wires and instances of the behavioural modules that have been previously defined.
+
+This is later expanded to allow for pipelining of the processor.
 
 ___
 ### Cache
 ___
 
-*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/cache/CPU/DataMem.sv)*
+*[DataMem.sv with Cache](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/cache/CPU/DataMem.sv)*
 
 The additional stretch goal of this project was to add Data Memory Cache to the pipelined processor. Even though this may negatively impact performance in the case of our processor, due to it already being single-cycle memory which is very fast, implementing this into the CPU taught me further details about how cache memory works and the challenges that can occur when implementing it into a real design.
 
