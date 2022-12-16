@@ -14,7 +14,7 @@ module DataMem #(
     logic [BYTE_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00000000];   // set mem size
 
     initial begin
-        $readmemh("gaussian.mem", ram_array, 32'h10000);
+        $readmemh("triangle.mem", ram_array, 32'h10000);
     end;
 
     always_ff @(posedge clk) begin
