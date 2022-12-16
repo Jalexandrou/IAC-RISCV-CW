@@ -17,23 +17,24 @@ ___
 
 | module | James Donald | Jacob Peake | Jacob Lucas Alexandrou | Derin Ak |
 | --- | --- | --- | --- | --- |
-| ALU.sv |  | * |  |  |
-| ALUDecoder.sv | * |  |  |  |
-| ControlUnit.sv | * |  |  |  |
-| ControlUnitDecoder.sv | * | x |  |  |
+| ALU.sv |  | * | x |  |
+| ALUDecoder.sv | * |  | x |  |
+| ControlUnit.sv | * |  | x |  |
+| ControlUnitDecoder.sv | * | x | x |  |
 | DataMem.sv |  | * | * |  |
-| InstructionMem.sv |  |  |  |  |
-| PC_Next.sv |  |  |  | * |
+| InstructionMem.sv |  |  | * |  |
+| PC_Next.sv |  |  | x | * |
 | PC_Register.sv | x |  |  | * |
-| RegFile.sv |  | * |  |  |
-| SignExtend.sv |  |  |  |  |
-| cpu.sv | x | * |  |  |
-| cpu_tbb.cpp | * |  |  |  |
-| testbench | * |  |  |  |
-| program | x |  |  | x |
-| pipelining |  |  |  | * |
-| cache |  | * |  |  |
-| testing | x | x |  | x |
+| RegFile.sv |  | * | x |  |
+| SignExtend.sv |  |  | * |  |
+| cpu.sv | x | * | x |  |
+| f1.s | x |  | * |  |
+| f1Test.cpp | * |  |  |  |
+| pdf.s changes|  |  | * |  |
+| pdfTest.cpp |  |  | * |  |
+| Pipelining changes | x |  | x | * |
+| Cache |  | * |  |  |
+| General testing | x | x | * | x |
 
 Principle Contributor: *
 
