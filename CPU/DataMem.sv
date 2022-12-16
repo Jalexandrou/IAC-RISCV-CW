@@ -14,7 +14,7 @@ module DataMem #(
     logic [BYTE_WIDTH-1:0] ram_array [32'h0001FFFF:32'h00000000];   // set mem size
 
     initial begin
-        $readmemh("triangle.mem", ram_array, 32'h10000);
+        $readmemh("gaussian.mem", ram_array, 32'h10000);
     end;
 
     always_ff @(posedge clk) begin
@@ -31,7 +31,7 @@ module DataMem #(
 
     always_comb begin
         if (ByteOp) begin
-            ReadData = ram_array[Address];
+            ReadData = {24'b0, ram_array[Address]};
         end
         else begin
             ReadData = {ram_array[{Address[31:2], 2'b0}], 
