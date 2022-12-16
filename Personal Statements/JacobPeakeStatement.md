@@ -91,3 +91,11 @@ A problem is encountered is when writing data to cache memory. If cache misses, 
 If I had more time, I would have implemented set associative cache which is designed to take advantage of spatial locality in order to maximise the reduction in miss rate. I also would have added multiple levels of cache as an expansion of memory heirarchy.         
 ___
 
+### Relevant Commits
+- [`Adding ALU`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/65945848e7b2a2c131758b5361d6a271e4588043)
+- [`Adding DataMem`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/ee85bf3daf01f4ebe64abc5401fe508efdc47020)
+- [`Adding RegFile`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/388a77eda0c8e39489a467bd0be464e26e7413ee)
+- [`Adding CPU`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/0dd456775f735c92ff1a90fa883f4c743d6066e8)
+- [`Cache Array`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/a5d6d05544fbe9896f725d327c1d2d139c832db0)
+- [`Writing into Cache`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/6a7ebf8de81103ac05fe14dff6ed911cf3fa7d3f)
+
