@@ -5,7 +5,11 @@
 ___
 ## Joint Statement
 
-Our team has completed the design and verification of a single-cycle RV32I processor. The pipelined version of the processor can be found in the *pipelining* branch & the data memory cache can also be found in the *cache* branch, as these are the two stretch goals.
+Our team has completed the design and verification of a single-cycle RV32I processor and pipelined version. The pipelined version of the processor can be found in the *pipelining* branch & an incompleted version data memory cache can also be found in the *cache* branch.
+
+The rtl folder on the **main** and **pipelining** branches contains everything required to run the reference program on each version of the cpu. Please edit line 17 of `DataMem.sv` to change which memory file is being loaded and the `vbuddy.cfg` may also need to be changed for your device. Following this just run the `pdf.sh` script. Expected results can be seen [here](/Personal%20Statements/JAlexandrouStatement.md/#Results)
+
+The `test` folder on both branches contains the version of pdf.s being used.
 
 To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below.
 
@@ -15,7 +19,7 @@ ___
 
 ## Table for Individual Contributions
 
-| module | James Donald | Jacob Peake | Jacob Lucas Alexandrou | Derin Ak |
+| Module | James Donald | Jacob Peake | Jacob Lucas Alexandrou | Derin Ak |
 | --- | --- | --- | --- | --- |
 | ALU.sv |  | * | x |  |
 | ALUDecoder.sv | * |  | x |  |
