@@ -1,6 +1,6 @@
 <center>
 
-## RV32I Pipelined CPU Coursework
+## RISC-V RV32I Pipelined CPU Coursework
 ___
     
 ## Personal Statement of Contributions
