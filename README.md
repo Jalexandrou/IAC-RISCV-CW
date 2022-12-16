@@ -11,6 +11,8 @@ The rtl folder on the **main** and **pipelining** branches contains everything r
 
 The `test` folder on both branches contains the version of pdf.s being used.
 
+To run the f1 program, please run the f1.sh script in the CPU folder on the branches **f1** and **f1pipelined**
+
 To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below.
 
 *Thanks to Peter Cheung & all of the GTAs & UTAs who helped to put this project together.*
