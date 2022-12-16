@@ -27,12 +27,12 @@ module DataMem #(
             ram_array[{Address[31:2], 2'b0}+2] <= WriteData[15:8];
             ram_array[{Address[31:2], 2'b0}+3] <= WriteData[7:0];
 
-            cache_array[Address[10:2]] <= WriteData;    // Write recently accessed data to corresponding set in Cache, exploiting temporal locality
+            cache_array[Address[10:2]] <= WriteData;    // Update Cache
         end
         else if (we && ByteOp) begin
             ram_array[Address] <= WriteData[7:0];
 
-            cache_array[Address[10:2]] <= WriteData;
+            cache_array[Address[10:2]] <= WriteData;   // Update Cache
         end
     end
 
@@ -43,6 +43,8 @@ module DataMem #(
             end
             else begin
             ReadData = ram_array[Address];
+                
+            cache_array[Address[10:2]] <= ram_array[Address]; // Put Missed Data into Cache, Temporal Locality
             end
         end
         else begin
@@ -54,6 +56,8 @@ module DataMem #(
                         ram_array[{Address[31:2], 2'b0}+1], 
                         ram_array[{Address[31:2], 2'b0}+2], 
                         ram_array[{Address[31:2], 2'b0}+3]};
+                
+            cache_array[Address[10:2]] <= ram_array[Address]; // Put Missed Data into Cache, Temporal Locality
             end
         end
     end
