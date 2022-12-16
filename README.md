@@ -5,15 +5,15 @@
 ___
 ## Joint Statement
 
-Our team has completed the design and verification of a single-cycle RV32I processor and pipelined version. The pipelined version of the processor can be found in the *pipelining* branch & an incompleted version data memory cache can also be found in the *cache* branch.
+Our team has completed the design and verification of a single-cycle RV32I processor and pipelined version. The pipelined version of the processor can be found in the *pipelining* branch & an incomplete version with data memory cache can also be found in the *cache* branch.
 
 The rtl folder on the **main** and **pipelining** branches contains everything required to run the reference program on each version of the cpu. Please edit line 17 of `DataMem.sv` to change which memory file is being loaded and the `vbuddy.cfg` may also need to be changed for your device. Following this just run the `pdf.sh` script. Expected results can be seen [here](/Personal%20Statements/JAlexandrouStatement.md/#Results)
 
 The `test` folder on both branches contains the version of pdf.s being used.
 
-To run the f1 program, please run the f1.sh script in the CPU folder on the branches **f1** and **f1pipelined**
+To run the f1 program, please run the `f1.sh` script in the `CPU` folder on the branches **f1** and **f1pipelined**
 
-To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below.
+To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below. Personal Statements are in the `Personal Statements` folder.
 
 *Thanks to Peter Cheung & all of the GTAs & UTAs who helped to put this project together.*
 
