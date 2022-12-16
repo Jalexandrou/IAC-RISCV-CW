@@ -67,6 +67,9 @@ display:    # function send PDF array value to a0 for display
 _loop3:                         # repeat
     NOP
     NOP
+    LI      a0, -1              # for testbench
+    NOP
+    NOP
     LBU     a0, base_pdf(a1)    #   a0 = mem[base_pdf+a1)
     NOP
     NOP
