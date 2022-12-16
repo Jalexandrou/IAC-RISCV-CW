@@ -2,7 +2,7 @@ module DataMem #(
     parameter   ADDRESS_WIDTH = 32,
                 DATA_WIDTH = 32,
                 BYTE_WIDTH = 8,
-                SET_WIDTH = 8,  // Cache has max of 256 bytes, 64 words, so needs 8 bit Set value
+                SET_WIDTH = 6,  // Cache has max of 256 bytes, 64 words, so needs 6 bit Set value
                 CACHE_WIDTH = DATA_WIDTH + (ADDRESS_WIDTH - SET_WIDTH - 2) + 1  // Data + Tag + V
 )(
     input  logic                         clk,
@@ -27,30 +27,30 @@ module DataMem #(
             ram_array[{Address[31:2], 2'b0}+2] <= WriteData[15:8];
             ram_array[{Address[31:2], 2'b0}+3] <= WriteData[7:0];
 
-            cache_array[Address[10:2]] <= WriteData;    // Update Cache to avoid Cache Coherency problem
+            cache_array[Address[8:2]] <= WriteData;    // Update Cache to avoid Cache Coherency problem
         end
         else if (we && ByteOp) begin
             ram_array[Address] <= WriteData[7:0];
 
-            cache_array[Address[10:2]] <= WriteData;   // Update Cache to avoid Cache Coherency problem
+            cache_array[Address[8:2]] <= WriteData;   // Update Cache to avoid Cache Coherency problem
         end
     end
 
     always_comb begin
         if (ByteOp) begin
-            if((cache_array[44:32] == Address [31:10]) && cache_array[45] == 1) begin   // Check cache first
-                ReadData = cache_array[Address[10:2]];
+            if((cache_array[55:32] == Address [31:8]) && cache_array[56] == 1) begin   // Check cache first
+                ReadData = cache_array[Address[8:2]];
             end
             else begin
                 ReadData = ram_array[Address];
                 
-                cache_array[Address[10:2]] <= ram_array[Address]; // Put Accessed Data into Cache, Temporal Locality
+                cache_array[Address[8:2]] <= ram_array[Address]; // Put Accessed Data into Cache, Temporal Locality
  
             end
         end
         else begin
-            if((cache_array[44:32] == Address [31:10]) && cache_array[45] == 1) begin   // Check cache first
-                ReadData = cache_array[Address[10:2]];
+            if((cache_array[55:32] == Address [31:8]) && cache_array[56] == 1) begin   // Check cache first
+                ReadData = cache_array[Address[8:2]];
             end
             else begin
                 ReadData = {ram_array[{Address[31:2], 2'b0}], 
@@ -58,7 +58,7 @@ module DataMem #(
                         ram_array[{Address[31:2], 2'b0}+2], 
                         ram_array[{Address[31:2], 2'b0}+3]};
                 
-                cache_array[Address[10:2]] <= ram_array[Address]; // Put Accessed Data into Cache, Temporal Locality
+                cache_array[Address[8:2]] <= ram_array[Address]; // Put Accessed Data into Cache, Temporal Locality
       
             end
         end
