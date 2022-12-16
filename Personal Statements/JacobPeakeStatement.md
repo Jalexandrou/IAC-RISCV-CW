@@ -21,21 +21,22 @@ ___
 ### ALU
 ___
 
-
+*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/ALU.sv)*
 ___
 ### Data Memory
 ___
 
-
+*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/DataMem.sv)*
 ___
 ### Register File
 ___
 
-
+*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/RegFile.sv)*
 ___
 ### CPU
 ___
 
+*[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/cpu.sv)*
 
 ___
 ### Cache
@@ -70,9 +71,6 @@ Here is a diagram of the direct-mapped 256-byte cache:
 
 <p align="center"> <img src="images/cache.jpg" /> </p>
 
-
-            
-
-
+If I had more time, I would have implemented set associative cache which is designed to take advantage of spatial locality in order to reduce the miss rate as much as possible. I also would have liked to expand the memory heirarchy to multiple levels of cache.         
 ___
 
