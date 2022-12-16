@@ -54,7 +54,7 @@ ___
 
 [Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/pipelining/CPU/cpu.sv)
 
-I added registers between the fetch, decode, execute, memory, and writeback stages that outputs necessary signals at the `negedge clk` and created necessary interconnecting wires. Keeping the pipelining registers in the CPU file made it easier for me to see how the wires were connected and follow different stages. I connected them as shown in the diagram below although some of the control unit signals are different from the diagram. I connected these signals that are different from the diagram according to the stage they were being used.  
+I added registers between the fetch, decode, execute, memory, and writeback stages that outputs necessary signals at the `negedge clk` and created necessary interconnecting wires. Keeping the pipelining registers in the `CPU` file made it easier for me to see how the wires were connected and follow different stages. I connected them as shown in the diagram below although some of the control unit signals are different from the diagram. I connected these signals that are different from the diagram according to the stage they were being used.  
 
 <p align="center"> <img src="images/pipelining.png" /> </p>
 
