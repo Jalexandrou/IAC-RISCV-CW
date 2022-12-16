@@ -17,7 +17,6 @@
 * [Data Memory](#Data-Memory)
 * [Register File](#Register-File)
 * [CPU](#CPU)
-* 
 * [Cache](#Cache)
 
 
