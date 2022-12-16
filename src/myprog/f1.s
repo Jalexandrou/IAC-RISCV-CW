@@ -2,16 +2,26 @@
 #memory needs to be mapped correctly
 main:
     jal     ra, init           # execute init subroutine
+    NOP                        # control hazard
+    NOP                        # control hazard
+    jal     ra, reset          # reset to 0
+    NOP                        # control hazard
+    NOP                        # control hazard
+    j wait                     # jump to loop
+    NOP                        # control hazard
+    NOP                        # control hazard
+wait:
+    j       wait               # loop forever
+    NOP                        # control hazard
+    NOP                        # control hazard
 loop:
-    NOP                        # control hazard
-    NOP                        # control hazard
-    jal     ra, reset          # execute reset subroutine
-    NOP                        # control hazard
-    NOP                        # control hazard
     jal     ra, shift          # execute shift subroutine
     NOP                        # control hazard
     NOP                        # control hazard
-    j       loop               # loop forever
+    jal     reset              # reset to 0
+    NOP                        # control hazard
+    NOP                        # control hazard
+    j       wait               # jump to wait
 init:
     addi    t1, zero, 0xFF     # load t1 with 255
     NOP                        # control hazard
