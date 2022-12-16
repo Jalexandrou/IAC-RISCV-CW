@@ -47,7 +47,7 @@ The additional stretch goal of this project was to add Data Memory Cache to the 
 
 In my design I have used direct mapped cache as it is simple to implement into the existing processor- and only requires a small amount of extra hardware which can be put inside the Data Memory module itself. As the limit given by the stretch goal is 256 bytes of data cache- I had to implement the cache as having a capacity of 64 words, with a width of 57 bits, 32 for the data, 24 for the tag and 1 for the V bit.
 
-This allowed me to define a 1-D cache array with 64 sets:
+This allowed me to define a one dimensional cache array with 64 sets:
 
 `logic [CACHE_WIDTH-1:0] cache_array [2**SET_WIDTH-1:0];`
 
@@ -63,6 +63,12 @@ else begin
     cache_array[Address[8:2]] <= ram_array[Address];    // Put Accessed Data into Cache, Temporal Locality
  end
 ```
+
+A problem is encountered is when writing data to cache memory. If cache misses, the cache block is fetched from main memory and the word is written to the cache block. If cache hits, the word is simply written to the cache block. Once a word is written, the cache contains different data from the main memory (cache coherency). To solve this, I implemented the cache as write through- so that data is written to cache and the main memory simultaneously. Whenever write enable is 1- any data written to main memory is also written to the corresponding set in cache.
+
+Here is a diagram of the direct-mapped 256-byte cache:
+
+<p align="center"> <img src="images/cache.jpg" /> </p>
 
 
             
