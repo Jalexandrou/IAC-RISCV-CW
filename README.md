@@ -30,10 +30,10 @@ ___
 | CPU.sv | x | * |  |  |
 | cpu_tbb.cpp | * |  |  |  |
 | testbench | * |  |  |  |
-| program | x |  |  |  |
+| program | x |  |  | x |
 | pipelining |  |  |  | * |
 | cache |  | * |  |  |
-| testing | x |  |  |  |
+| testing | x |  |  | x |
 
 Principle Contributor: *
 
