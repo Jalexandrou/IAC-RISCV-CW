@@ -46,10 +46,15 @@ module DataMem #(
             end
         end
         else begin
+            if((cache_array[44:32] == Address [31:10]) && cache_array[45] == 1) begin   // Check cache first
+                ReadData = cache_array[Address[10:2]];
+            end
+            else begin
             ReadData = {ram_array[{Address[31:2], 2'b0}], 
                         ram_array[{Address[31:2], 2'b0}+1], 
                         ram_array[{Address[31:2], 2'b0}+2], 
                         ram_array[{Address[31:2], 2'b0}+3]};
+            end
         end
     end
 
