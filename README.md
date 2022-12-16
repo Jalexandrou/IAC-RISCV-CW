@@ -27,13 +27,13 @@ ___
 | PC_Register.sv | x |  |  | * |
 | RegFile.sv |  | * |  |  |
 | SignExtend.sv |  |  |  |  |
-| CPU.sv | x | * |  |  |
+| cpu.sv | x | * |  |  |
 | cpu_tbb.cpp | * |  |  |  |
 | testbench | * |  |  |  |
 | program | x |  |  | x |
 | pipelining |  |  |  | * |
 | cache |  | * |  |  |
-| testing | x |  |  | x |
+| testing | x | x |  | x |
 
 Principle Contributor: *
 
