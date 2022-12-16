@@ -18,22 +18,22 @@ ___
 | module | James Donald | Jacob Peake | Jacob Lucas Alexandrou | Derin Ak |
 | --- | --- | --- | --- | --- |
 | ALU.sv |  | * |  |  |
-| ALUDecoder.sv |  |  |  |  |
-| ControlUnit.sv |  |  |  |  |
-| ControlUnitDecoder.sv |  | x |  |  |
+| ALUDecoder.sv | * |  |  |  |
+| ControlUnit.sv | * |  |  |  |
+| ControlUnitDecoder.sv | * | x |  |  |
 | DataMem.sv |  | * | * |  |
 | InstructionMem.sv |  |  |  |  |
 | PC_Next.sv |  |  |  | * |
-| PC_Register.sv |  |  |  | * |
+| PC_Register.sv | x |  |  | * |
 | RegFile.sv |  | * |  |  |
 | SignExtend.sv |  |  |  |  |
-| CPU.sv |  | * |  |  |
-| cpu_tbb.cpp |  |  |  |  |
-| testbench |  |  |  |  |
-| program |  |  |  |  |
+| CPU.sv | x | * |  |  |
+| cpu_tbb.cpp | * |  |  |  |
+| testbench | * |  |  |  |
+| program | x |  |  |  |
 | pipelining |  |  |  | * |
 | cache |  | * |  |  |
-| testing |  |  |  |  |
+| testing | x |  |  |  |
 
 Principle Contributor: *
 
