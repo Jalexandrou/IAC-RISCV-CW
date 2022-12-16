@@ -22,16 +22,31 @@ ___
 ___
 
 *[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/ALU.sv)*
+
+The ALU.sv module was copied from Laboratory 4 with some changes. Implementing the ALU taught me how to use enumeration, specifying an enumerated type `func` which characterised all of the ALU operations as numbers corresponding to the value of `ALUctrl` that determines that operation. 
+
+We then could define these operations in an `always_comb` statement- giving the operation performed in each case. This requires a default case to also be specified. After defining all operations, all that was need was to set the `zero_o` valeue to 1 if the output of the ALU was 0, and 0 otherwise.
+
+*Thanks to Jake for contributing with the LSHIFT and PASSOP2 operations.*
 ___
 ### Data Memory
 ___
 
 *[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/DataMem.sv)*
+
+For the DataMem.sv module, we must define the memory with respect to the memory map given to us in the project brief- requiring the Data Memory to be defined by address values h'0001FFFF & h'00000000. On the positive edge of the clock, if `we = 1`, then data is written into memory at the specified address. This is done with byte addressing if the value of `ByteOp` is 0.
+
+Then, defined in combinational logic, data can be written at any time into memory at the address specified, using byte or word addressing methods.
+
+*Thanks to Jake for contributing with Byte Addressing.*
+
 ___
 ### Register File
 ___
 
 *[Link to module](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/blob/main/CPU/RegFile.sv)*
+
+
 ___
 ### CPU
 ___
@@ -67,10 +82,6 @@ else begin
 
 A problem is encountered is when writing data to cache memory. If cache misses, the cache block is fetched from main memory and the word is written to the cache block. If cache hits, the word is simply written to the cache block. Once a word is written, the cache contains different data from the main memory (cache coherency). To solve this, I implemented the cache as write through- so that data is written to cache and the main memory simultaneously. Whenever write enable is 1- any data written to main memory is also written to the corresponding set in cache.
 
-Here is a diagram of the direct-mapped 256-byte cache:
-
-<p align="center"> <img src="images/cache.jpg" /> </p>
-
-If I had more time, I would have implemented set associative cache which is designed to take advantage of spatial locality in order to reduce the miss rate as much as possible. I also would have liked to expand the memory heirarchy to multiple levels of cache.         
+If I had more time, I would have implemented set associative cache which is designed to take advantage of spatial locality in order to maximise the reduction in miss rate. I also would have added multiple levels of cache as an expansion of memory heirarchy.         
 ___
 
