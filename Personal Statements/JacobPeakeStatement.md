@@ -53,23 +53,19 @@ This allowed me to define a 1-D cache array with 64 sets:
 
 When reading data from memory, the cache should be checked first, before checking the data memory itself. To implement this is SV, we use an if statement to compare value in Cache with the corresponding Tag of the address- and check if the V bit is 1. If true, read data from Cache, otherwise go to the data memory address to read data and also copy that data into cache.
 
-`
-
-if((cache_array[55:32] == Address [31:8]) && cache_array[56] == 1) begin   // Check cache first
-
-                ReadData = cache_array[Address[8:2]];
+```
+if((cache_array[55:32] == Address [31:8]) && cache_array[56] == 1) begin    // Check cache first
+    ReadData = cache_array[Address[8:2]];
+end
+else begin
+    ReadData = ram_array[Address];
                 
-            end
+    cache_array[Address[8:2]] <= ram_array[Address];    // Put Accessed Data into Cache, Temporal Locality
+ end
+```
+
+
             
-            else begin
-            
-                ReadData = ram_array[Address];
-                
-                cache_array[Address[8:2]] <= ram_array[Address]; // Put Accessed Data into Cache, Temporal Locality
- 
-            end
-            
-`
 
 
 ___
