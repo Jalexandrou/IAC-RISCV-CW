@@ -5,7 +5,7 @@
 ___
 ## Joint Statement
 
-Our team has completed the design and verification of a single-cycle pipelined RV32I processor. The pipelined version of the processor can be found in the *pipelined* branch & the data memory cache can also be found in the *cache* branch, as these are the two stretch goals.
+Our team has completed the design and verification of a single-cycle RV32I processor. The pipelined version of the processor can be found in the *pipelined* branch & the data memory cache can also be found in the *cache* branch, as these are the two stretch goals.
 
 To complete this project, each member of the team was assigned and contributed to their own areas of the development and testing process. This is best summarised in the table below.
 
