@@ -2,6 +2,29 @@
 
 > [Project Brief Repo](https://github.com/EIE2-IAC-Labs/Project_Brief)
 
+## Table for Individual Contributions
+
+| module | James Donald | Jacob Ellis Peake | Jacob Lucas Alexandrou | Derin Ak |
+| --- | --- | --- | --- | --- |
+| ALU |  |  |  |  |
+| ALU Decoder |  |  |  |  |
+| Control Unit |  |  |  |  |
+| Control Unit Decoder |  |  |  |  |
+| Data Memory |  |  |  |  |
+| Instruction Memory |  |  |  |  |
+| PC Next |  |  |  |  |
+| PC Register |  |  |  |  |
+| Register File |  |  |  |  |
+| Sign Extend |  |  |  |  |
+| CPU |  |  |  |  |
+| cpu_tbb.cpp |  |  |  |  |
+| testbench |  |  |  |  |
+| program |  |  |  |  |
+| pipelining |  |  |  |  |
+| cache |  |  |  |  |
+| testing |  |  |  |  |
+
+
 ## Table for Control Unit Signals
 
 | Opcode | Branch_o | ResultSrc_o | MemWrite_o | ALUSrc_o | ImmSrc_o | RegWrite_o |
