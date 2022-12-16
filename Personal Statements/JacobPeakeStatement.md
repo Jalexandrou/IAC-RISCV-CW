@@ -2,7 +2,8 @@
 
 ## RV32I Pipelined CPU Coursework
 
-**_Jacob Peake_ Personal Statement of Contributions**
+**_Jacob Peake_ 
+ Personal Statement of Contributions**
 
 ---
 
