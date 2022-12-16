@@ -4,25 +4,28 @@
 
 ## Table for Individual Contributions
 
-| module | James Donald | Jacob Ellis Peake | Jacob Lucas Alexandrou | Derin Ak |
+| module | James Donald | Jacob Peake | Jacob Lucas Alexandrou | Derin Ak |
 | --- | --- | --- | --- | --- |
-| ALU |  |  |  |  |
-| ALU Decoder |  |  |  |  |
-| Control Unit |  |  |  |  |
-| Control Unit Decoder |  |  |  |  |
-| Data Memory |  |  |  |  |
-| Instruction Memory |  |  |  |  |
-| PC Next |  |  |  |  |
-| PC Register |  |  |  |  |
-| Register File |  |  |  |  |
-| Sign Extend |  |  |  |  |
-| CPU |  |  |  |  |
+| ALU.sv |  | * |  |  |
+| ALUDecoder.sv |  |  |  |  |
+| ControlUnit.sv |  |  |  |  |
+| ControlUnitDecoder.sv |  | x |  |  |
+| DataMem.sv |  | * | |  |
+| InstructionMem.sv |  |  |  |  |
+| PC_Next.sv |  |  |  |  |
+| PC_Register.sv |  |  |  |  |
+| RegFile.sv |  | * |  |  |
+| SignExtend.sv |  |  |  |  |
+| CPU.sv |  | * |  |  |
 | cpu_tbb.cpp |  |  |  |  |
 | testbench |  |  |  |  |
 | program |  |  |  |  |
 | pipelining |  |  |  |  |
-| cache |  |  |  |  |
+| cache |  | * |  |  |
 | testing |  |  |  |  |
+
+* Principle Contributor
+x Also Helped
 
 
 ## Table for Control Unit Signals
