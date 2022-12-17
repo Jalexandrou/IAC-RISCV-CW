@@ -91,6 +91,8 @@ A problem is encountered is when writing data to cache memory. If cache misses, 
 If I had more time, I would have implemented set associative cache which is designed to take advantage of spatial locality in order to maximise the reduction in miss rate. I also would have added multiple levels of cache as an expansion of memory heirarchy.         
 ___
 
+In reflection, I am satisfied & happy with the outcome of our RV32I Processor. I believe that the team was organised and handled the distribution of tasks efficiently and communicated effectively throughout- resulting in the team completing the main objective and two additional 'stretch goals'. I would have much enjoyed having more time to further explore this area and look forward to continuing this module with compilers next term. Many thanks to my fellow peers who worked on this project with me!
+___
 ### Relevant Commits
 - [`Adding ALU`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/65945848e7b2a2c131758b5361d6a271e4588043)
 - [`Adding DataMem`](https://github.com/EIE2-IAC-Labs/iac-riscv-cw-1/commit/ee85bf3daf01f4ebe64abc5401fe508efdc47020)
