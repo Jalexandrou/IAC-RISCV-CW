@@ -5,7 +5,7 @@
 ___
 ## Joint Statement
 
-Our team has completed the design and verification of a single-cycle RV32I processor and pipelined version. The pipelined version of the processor can be found in the *pipelining* branch & an incomplete version with data memory cache can also be found in the *cache* branch.
+Our team has completed the design and verification of a single-cycle RV32I processor and pipelined version. The pipelined version of the processor can be found in the *pipelining* branch & a version with data memory cache can also be found in the *cache* branch.
 
 The rtl folder on the **main** and **pipelining** branches contains everything required to run the reference program on each version of the cpu. Please edit line 17 of `DataMem.sv` to change which memory file is being loaded and the `vbuddy.cfg` may also need to be changed for your device. Following this just run the `pdf.sh` script. Expected results can be seen [here](/Personal%20Statements/JAlexandrouStatement.md/#Results)
 
